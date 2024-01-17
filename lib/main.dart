@@ -15,7 +15,7 @@ class MeterMate extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const SignUpPage(),
+      home: const HomePage(),
       routes: {
         'loginPage': (context) => const LoginPage(),
         'signUpPage': (context) => const SignUpPage(),
