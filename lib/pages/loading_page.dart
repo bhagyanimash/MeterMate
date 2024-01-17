@@ -1,4 +1,4 @@
-// ignore_for_file: depend_on_referenced_packages
+//ignore_for_file: depend_on_referenced_packages
 
 import 'package:flutter/material.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
