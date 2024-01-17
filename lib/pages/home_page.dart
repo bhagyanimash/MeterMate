@@ -13,6 +13,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        toolbarHeight: 60,
         backgroundColor: Colors.white,
         leading: Row(
           children: [
@@ -26,12 +27,7 @@ class _HomePageState extends State<HomePage> {
         title: const Text(
           "MeterMate",
           style: TextStyle(
-            color: Color.fromRGBO(
-              3,
-              2,
-              64,
-              1.000,
-            ),
+            color: Color.fromRGBO(3, 2, 64, 1.000),
           ),
         ),
         actions: [
@@ -40,12 +36,7 @@ class _HomePageState extends State<HomePage> {
             onPressed: () {},
             icon: const Icon(
               Icons.notifications,
-              color: Color.fromRGBO(
-                3,
-                2,
-                64,
-                1.000,
-              ),
+              color: Color.fromRGBO(3, 2, 64, 1.000),
             ),
           ),
           IconButton(
@@ -53,63 +44,112 @@ class _HomePageState extends State<HomePage> {
             onPressed: () {},
             icon: const Icon(
               Icons.account_circle,
-              color: Color.fromRGBO(
-                3,
-                2,
-                64,
-                1.000,
-              ),
+              color: Color.fromRGBO(3, 2, 64, 1.000),
             ),
           ),
         ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.only(top: 100),
-        child: GridView.count(
-          crossAxisCount: 2,
-          children: [
-            Column(
+      body: Stack(
+        children: [
+          // Padding(
+          //   padding: const EdgeInsets.all(40.0),
+          //   child: Container(
+          //     color: Colors.amber,
+          //     height: 100,
+          //   ),
+          // ),
+          Padding(
+            padding: const EdgeInsets.only(top: 200),
+            child: GridView.count(
+              padding: const EdgeInsets.all(30),
+              crossAxisCount: 2,
               children: [
-                IconButton(
-                  iconSize: 100,
-                  onPressed: () {},
-                  icon: Icon(Icons.crop_free),
+                Column(
+                  children: [
+                    IconButton(
+                      iconSize: 80,
+                      onPressed: () {},
+                      icon: const Icon(
+                        Icons.crop_free,
+                        color: Color.fromRGBO(3, 2, 64, 1.000),
+                      ),
+                    ),
+                    const Text('Scan')
+                  ],
                 ),
-                Text('Scan')
+                Column(
+                  children: [
+                    IconButton(
+                      iconSize: 80,
+                      onPressed: () {},
+                      icon: const Icon(
+                        Icons.assignment,
+                        color: Color.fromRGBO(3, 2, 64, 1.000),
+                      ),
+                    ),
+                    const Text('Bill History')
+                  ],
+                ),
+                Column(
+                  children: [
+                    IconButton(
+                      iconSize: 80,
+                      onPressed: () {},
+                      icon: const Icon(
+                        Icons.credit_card,
+                        color: Color.fromRGBO(3, 2, 64, 1.000),
+                      ),
+                    ),
+                    const Text('Pay Bill')
+                  ],
+                ),
+                Column(
+                  children: [
+                    IconButton(
+                      iconSize: 80,
+                      onPressed: () {},
+                      icon: const Icon(
+                        Icons.person_add,
+                        color: Color.fromRGBO(3, 2, 64, 1.000),
+                      ),
+                    ),
+                    const Text('Add Account')
+                  ],
+                ),
               ],
             ),
-            Column(
-              children: [
-                IconButton(
-                  iconSize: 100,
-                  onPressed: () {},
-                  icon: Icon(Icons.assignment),
-                ),
-                Text('Bill History')
-              ],
+          ),
+        ],
+      ),
+      bottomNavigationBar: NavigationBar(
+        backgroundColor: Colors.white,
+        elevation: 20,
+        onDestinationSelected: (int index) {
+          setState(() {});
+        },
+        destinations: const <Widget>[
+          NavigationDestination(
+            icon: Icon(
+              Icons.home,
+              size: 40,
             ),
-            Column(
-              children: [
-                IconButton(
-                  iconSize: 100,
-                  onPressed: () {},
-                  icon: Icon(Icons.credit_card),
-                ),
-                Text('Pay Bill')
-              ],
+            label: 'Home',
+          ),
+          NavigationDestination(
+            icon: Icon(
+              Icons.place,
+              size: 40,
             ),
-            Column(
-              children: [
-                IconButton(
-                  iconSize: 100,
-                  onPressed: () {},
-                  icon: Icon(Icons.person_add),
-                ),
-                Text('Add Account')
-              ],
+            label: 'Map',
+          ),
+          NavigationDestination(
+            icon: Icon(
+              Icons.calendar_month,
+              size: 40,
             ),
-          ],
-        ),
+            label: 'Calender',
+          ),
+        ],
       ),
     );
   }
