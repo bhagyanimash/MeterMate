@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:loading_animation_widget/loading_animation_widget.dart';
+import 'package:metermate/pages/home_page.dart';
 import 'package:metermate/pages/loading_page.dart';
+import 'package:metermate/pages/login_page.dart';
+import 'package:metermate/pages/signup_page.dart';
 
 void main() {
   runApp(const MeterMate());
@@ -11,9 +13,14 @@ class MeterMate extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: LoadingPage(),
+      home: const HomePage(),
+      routes: {
+        'loginPage': (context) => const LoginPage(),
+        'signUpPage': (context) => const SignUpPage(),
+        'homePage': (context) => const HomePage()
+      },
     );
   }
 }
