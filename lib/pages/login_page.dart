@@ -82,39 +82,58 @@ class _LoginPageState extends State<LoginPage> {
                     height: 50.0,
                   ),
                   Center(
-                    child: RawMaterialButton(
-                      fillColor: const Color.fromRGBO(3, 2, 64, 1.000),
-                      //elevation: 0.0,
-                      //padding: EdgeInsets.symmetric(),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20.0)),
-                      onPressed: () {},
-                      child: const Text(
-                        "Log in",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18.0,
+                    child: SizedBox(
+                      height: 50,
+                      width: 500,
+                      child: RawMaterialButton(
+                        fillColor: const Color.fromRGBO(3, 2, 64, 1.000),
+                        //elevation: 0.0,
+                        //padding: EdgeInsets.symmetric(),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20.0)),
+                        onPressed: () {
+                          Navigator.pushNamed(context, 'homePage');
+                        },
+                        child: const Text(
+                          "Log in",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18.0,
+                          ),
                         ),
                       ),
                     ),
+                  ),
+                  const SizedBox(
+                    height: 10.0,
                   ),
                   const Center(
                     child: SizedBox(
                       child: Text("or"),
                     ),
                   ),
+                  const SizedBox(
+                    height: 10.0,
+                  ),
                   Center(
-                    child: OutlinedButton(
-                      onPressed: () {},
-                      style: ButtonStyle(
-                        shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20.0),
-                        )),
-                      ),
-                      child: const Text(
-                        "Sign Up",
-                        style: TextStyle(
-                            fontSize: 18, color: Color.fromRGBO(3, 2, 64, 1)),
+                    child: SizedBox(
+                      height: 50,
+                      width: 500,
+                      child: OutlinedButton(
+                        onPressed: () {
+                          Navigator.pushNamed(context, 'signUpPage');
+                        },
+                        style: ButtonStyle(
+                          shape:
+                              MaterialStateProperty.all(RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20.0),
+                          )),
+                        ),
+                        child: const Text(
+                          "Sign Up",
+                          style: TextStyle(
+                              fontSize: 18, color: Color.fromRGBO(3, 2, 64, 1)),
+                        ),
                       ),
                     ),
                   ),

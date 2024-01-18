@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:metermate/pages/login_page.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
@@ -22,7 +23,9 @@ class _SignUpPageState extends State<SignUpPage> {
             children: [
               IconButton(
                   iconSize: 30,
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamed(context, 'loginPage');
+                  },
                   icon: const Icon(
                     Icons.arrow_back,
                     color: Colors.black,
@@ -131,18 +134,22 @@ class _SignUpPageState extends State<SignUpPage> {
                 height: 50.0,
               ),
               Center(
-                child: RawMaterialButton(
-                  fillColor: const Color.fromRGBO(3, 2, 64, 1.000),
-                  //elevation: 0.0,
-                  //padding: EdgeInsets.symmetric(),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20.0)),
-                  onPressed: () {},
-                  child: const Text(
-                    "Sign Up",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 18.0,
+                child: SizedBox(
+                  height: 50,
+                  width: 500,
+                  child: RawMaterialButton(
+                    fillColor: const Color.fromRGBO(3, 2, 64, 1.000),
+                    //elevation: 0.0,
+                    //padding: EdgeInsets.symmetric(),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20.0)),
+                    onPressed: () {},
+                    child: const Text(
+                      "Sign In",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 18.0,
+                      ),
                     ),
                   ),
                 ),
