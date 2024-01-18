@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../app_bar.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -10,10 +11,11 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
+    // ignore: prefer_const_constructors
     return Scaffold(
-      backgroundColor: Colors.white,
       appBar: AppBar(
-        toolbarHeight: 60,
+        elevation: 1,
+        toolbarHeight: 70,
         backgroundColor: Colors.white,
         leading: Row(
           children: [
@@ -51,15 +53,15 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Stack(
         children: [
-          // Padding(
-          //   padding: const EdgeInsets.all(40.0),
-          //   child: Container(
-          //     color: Colors.amber,
-          //     height: 100,
-          //   ),
-          // ),
           Padding(
-            padding: const EdgeInsets.only(top: 200),
+            padding: const EdgeInsets.all(40.0),
+            child: Container(
+              color: const Color.fromRGBO(3, 2, 64, 1.000),
+              height: 200,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 250),
             child: GridView.count(
               padding: const EdgeInsets.all(30),
               crossAxisCount: 2,
@@ -131,6 +133,7 @@ class _HomePageState extends State<HomePage> {
           NavigationDestination(
             icon: Icon(
               Icons.home,
+              color: Color.fromRGBO(3, 2, 64, 1.000),
               size: 40,
             ),
             label: 'Home',
@@ -138,13 +141,15 @@ class _HomePageState extends State<HomePage> {
           NavigationDestination(
             icon: Icon(
               Icons.place,
+              color: Color.fromRGBO(3, 2, 64, 1.000),
               size: 40,
             ),
-            label: 'Map',
+            label: 'Outage Map',
           ),
           NavigationDestination(
             icon: Icon(
               Icons.calendar_month,
+              color: Color.fromRGBO(3, 2, 64, 1.000),
               size: 40,
             ),
             label: 'Calender',
