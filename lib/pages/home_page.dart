@@ -144,7 +144,7 @@ class _HomePageState extends State<HomePage> {
               color: Color.fromRGBO(3, 2, 64, 1.000),
               size: 40,
             ),
-            label: 'Map',
+            label: 'Outage Map',
           ),
           NavigationDestination(
             icon: Icon(

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
@@ -22,7 +24,9 @@ class _LoginPageState extends State<LoginPage> {
                 children: [
                   IconButton(
                       iconSize: 30,
-                      onPressed: () {},
+                      onPressed: () {
+                        exit(0);
+                      },
                       icon: const Icon(
                         Icons.arrow_back,
                         color: Colors.black,
