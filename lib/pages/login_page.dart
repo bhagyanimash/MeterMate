@@ -22,15 +22,15 @@ class _LoginPageState extends State<LoginPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  IconButton(
-                      iconSize: 30,
-                      onPressed: () {
-                        exit(0);
-                      },
-                      icon: const Icon(
-                        Icons.arrow_back,
-                        color: Colors.black,
-                      )),
+                  // IconButton(
+                  //     iconSize: 30,
+                  //     onPressed: () {
+                  //       exit(0);
+                  //     },
+                  //     icon: const Icon(
+                  //       Icons.arrow_back,
+                  //       color: Colors.black,
+                  //     )),
                   Center(
                     child: Image.asset(
                       'images/metermate.png',

@@ -11,9 +11,10 @@ class _QRscanPageState extends State<QRscanPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        elevation: 0,
         backgroundColor: Colors.white,
+        elevation: 0,
         title: Text(
           'Scan Meter QR',
           style: TextStyle(color: Colors.black),
