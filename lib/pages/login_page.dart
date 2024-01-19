@@ -10,6 +10,8 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  TextEditingController namecontroler = new TextEditingController();
+  TextEditingController pwdcontroler = new TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,6 +43,7 @@ class _LoginPageState extends State<LoginPage> {
                     height: 44.0,
                   ),
                   TextField(
+                    controller: namecontroler,
                     keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(
@@ -57,6 +60,8 @@ class _LoginPageState extends State<LoginPage> {
                     height: 26.0,
                   ),
                   TextField(
+                    controller: pwdcontroler,
+                    //keyboardType: TextInputType.text,
                     obscureText: true,
                     decoration: InputDecoration(
                         border: OutlineInputBorder(
@@ -95,8 +100,10 @@ class _LoginPageState extends State<LoginPage> {
                         //padding: EdgeInsets.symmetric(),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20.0)),
-                        onPressed: () {
-                          Navigator.pushNamed(context, 'homePage');
+                        onPressed: () async {
+                          Map<String, dynamic> userInfoMap = {
+                            "Email": namecontroler.text,
+                          };
                         },
                         child: const Text(
                           "Log in",

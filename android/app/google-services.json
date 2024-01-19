@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "321629471306",
+    "project_id": "metermate-89ca6",
+    "storage_bucket": "metermate-89ca6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:321629471306:android:a00658de33def9e3749cb3",
+        "android_client_info": {
+          "package_name": "com.example.metermate"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZ8nMyxgq3C48npd4QD5LfI7-4lt1qGxk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
