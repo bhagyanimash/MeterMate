@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:metermate/pages/bill_page.dart';
 import 'package:metermate/pages/home_page.dart';
 import 'package:metermate/pages/loading_page.dart';
 import 'package:metermate/pages/login_page.dart';
@@ -16,12 +17,13 @@ class MeterMate extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const QRscanPage(),
+      home: const billPage(),
       routes: {
         'loginPage': (context) => const LoginPage(),
         'signUpPage': (context) => const SignUpPage(),
         'homePage': (context) => const HomePage(),
-        'scanPage': (context) => const QRscanPage()
+        'scanPage': (context) => const QRscanPage(),
+        'billPage': (context) => const billPage()
       },
     );
   }
