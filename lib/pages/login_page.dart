@@ -1,6 +1,9 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:metermate/service/database.dart';
+import 'package:random_string/random_string.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -10,8 +13,6 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  TextEditingController namecontroler = new TextEditingController();
-  TextEditingController pwdcontroler = new TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,15 +25,6 @@ class _LoginPageState extends State<LoginPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // IconButton(
-                  //     iconSize: 30,
-                  //     onPressed: () {
-                  //       exit(0);
-                  //     },
-                  //     icon: const Icon(
-                  //       Icons.arrow_back,
-                  //       color: Colors.black,
-                  //     )),
                   Center(
                     child: Image.asset(
                       'images/metermate.png',
@@ -43,7 +35,6 @@ class _LoginPageState extends State<LoginPage> {
                     height: 44.0,
                   ),
                   TextField(
-                    controller: namecontroler,
                     keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(
@@ -60,8 +51,6 @@ class _LoginPageState extends State<LoginPage> {
                     height: 26.0,
                   ),
                   TextField(
-                    controller: pwdcontroler,
-                    //keyboardType: TextInputType.text,
                     obscureText: true,
                     decoration: InputDecoration(
                         border: OutlineInputBorder(
@@ -101,9 +90,7 @@ class _LoginPageState extends State<LoginPage> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20.0)),
                         onPressed: () async {
-                          Map<String, dynamic> userInfoMap = {
-                            "Email": namecontroler.text,
-                          };
+                          Navigator.pushNamed(context, "homePage");
                         },
                         child: const Text(
                           "Log in",
