@@ -24,6 +24,22 @@ class _SignUpPageState extends State<SignUpPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: const Color.fromRGBO(3, 2, 64, 1.000),
+        leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: const Icon(
+              Icons.arrow_back,
+            )),
+        title: const Text(
+          "Sign UP",
+          style: TextStyle(
+            color: Colors.white,
+          ),
+        ),
+      ),
       body: SafeArea(
           child: SingleChildScrollView(
         child: Padding(
@@ -32,15 +48,18 @@ class _SignUpPageState extends State<SignUpPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              IconButton(
-                  iconSize: 30,
-                  onPressed: () {
-                    Navigator.pushNamed(context, 'loginPage');
-                  },
-                  icon: const Icon(
-                    Icons.arrow_back,
-                    color: Colors.black,
-                  )),
+              // IconButton(
+              //     iconSize: 30,
+              //     onPressed: () {
+              //       Navigator.pushNamed(context, 'loginPage');
+              //     },
+              //     icon: const Icon(
+              //       Icons.arrow_back,
+              //       color: Colors.black,
+              //     )),
+              const SizedBox(
+                height: 20,
+              ),
               Center(
                 child: Image.asset(
                   'images/metermate.png',
@@ -179,7 +198,8 @@ class _SignUpPageState extends State<SignUpPage> {
                                   toastLength: Toast.LENGTH_SHORT,
                                   gravity: ToastGravity.CENTER,
                                   timeInSecForIosWeb: 1,
-                                  backgroundColor: Colors.red,
+                                  backgroundColor:
+                                      const Color.fromRGBO(3, 2, 64, 1.000),
                                   textColor: Colors.white,
                                   fontSize: 16.0)
                             },

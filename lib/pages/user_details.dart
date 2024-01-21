@@ -81,6 +81,7 @@ class _UserDetailState extends State<UserDetail> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: const Color.fromRGBO(3, 2, 64, 1.000),
         title: Text('User Details'),
       ),
       body: Container(

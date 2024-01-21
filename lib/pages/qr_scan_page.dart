@@ -13,11 +13,11 @@ class _QRscanPageState extends State<QRscanPage> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: const Color.fromRGBO(3, 2, 64, 1.000),
         elevation: 0,
-        title: Text(
+        title: const Text(
           'Scan Meter QR',
-          style: TextStyle(color: Colors.black),
+          style: TextStyle(color: Colors.white),
         ),
       ),
       body: Center(

@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:metermate/service/database.dart';
@@ -13,6 +15,14 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  final emailcontroler = TextEditingController();
+  final pwdcontroleler = TextEditingController();
+
+  void signUserIn() async {
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: emailcontroler.text, password: pwdcontroleler.text);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,8 +33,11 @@ class _LoginPageState extends State<LoginPage> {
             padding: const EdgeInsets.all(16.0),
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
+                  const SizedBox(
+                    height: 80,
+                  ),
                   Center(
                     child: Image.asset(
                       'images/metermate.png',
@@ -35,6 +48,7 @@ class _LoginPageState extends State<LoginPage> {
                     height: 44.0,
                   ),
                   TextField(
+                    controller: emailcontroler,
                     keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(
@@ -51,6 +65,7 @@ class _LoginPageState extends State<LoginPage> {
                     height: 26.0,
                   ),
                   TextField(
+                    controller: pwdcontroleler,
                     obscureText: true,
                     decoration: InputDecoration(
                         border: OutlineInputBorder(
@@ -89,8 +104,8 @@ class _LoginPageState extends State<LoginPage> {
                         //padding: EdgeInsets.symmetric(),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20.0)),
-                        onPressed: () async {
-                          Navigator.pushNamed(context, "homePage");
+                        onPressed: () {
+                          signUserIn();
                         },
                         child: const Text(
                           "Log in",

@@ -1,11 +1,14 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:metermate/firebase_options.dart';
+import 'package:metermate/pages/auth_page.dart';
 import 'package:metermate/pages/home_page.dart';
+import 'package:metermate/pages/loading_page.dart';
 import 'package:metermate/pages/login_page.dart';
 import 'package:metermate/pages/qr_scan_page.dart';
 import 'package:metermate/pages/signup_page.dart';
 import 'package:metermate/pages/user_details.dart';
+import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,13 +23,14 @@ class MeterMate extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const LoginPage(),
+      home: const AuthPage(),
       routes: {
         'loginPage': (context) => const LoginPage(),
         'signUpPage': (context) => const SignUpPage(),
         'homePage': (context) => const HomePage(),
         'scanPage': (context) => const QRscanPage(),
-        'userDetails': (context) => const UserDetail()
+        'userDetails': (context) => const UserDetail(),
+        'authPage': (context) => const AuthPage()
       },
     );
   }
