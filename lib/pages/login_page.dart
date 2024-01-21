@@ -19,8 +19,42 @@ class _LoginPageState extends State<LoginPage> {
   final pwdcontroleler = TextEditingController();
 
   void signUserIn() async {
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: emailcontroler.text, password: pwdcontroleler.text);
+    showDialog(
+        context: context,
+        builder: (context) {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        });
+
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: emailcontroler.text, password: pwdcontroleler.text);
+      Navigator.pop(context);
+    } on FirebaseAuthException catch (e) {
+      Navigator.pop(context);
+      if (e.code == 'user-not-found') {
+        wrongEmailMessage(context);
+      } else if (e.code == 'wrong-password') {
+        wrongPasswordMessage(context);
+      }
+    }
+  }
+
+  void wrongEmailMessage(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (context) => const AlertDialog(
+              title: Text('Incorrect Email'),
+            ));
+  }
+
+  void wrongPasswordMessage(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (context) => const AlertDialog(
+              title: Text('Incorrect Password'),
+            ));
   }
 
   @override
@@ -83,12 +117,7 @@ class _LoginPageState extends State<LoginPage> {
                   const Text(
                     "Forgot Password?",
                     style: TextStyle(
-                      color: Color.fromRGBO(
-                        3,
-                        2,
-                        64,
-                        1.000,
-                      ),
+                      color: const Color.fromRGBO(3, 2, 64, 1.000),
                     ),
                   ),
                   const SizedBox(

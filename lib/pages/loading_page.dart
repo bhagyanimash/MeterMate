@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
+import 'package:metermate/pages/auth_page.dart';
 
 import 'login_page.dart';
 
@@ -18,7 +19,7 @@ class _LoadingPageState extends State<LoadingPage> {
     super.initState();
     Future.delayed(const Duration(seconds: 3), () {
       Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => const LoginPage()));
+          context, MaterialPageRoute(builder: (context) => const AuthPage()));
     });
   }
 

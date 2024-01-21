@@ -20,7 +20,7 @@ class _HomePageState extends State<HomePage> {
     // ignore: prefer_const_constructors
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromRGBO(3, 2, 64, 1.000),
+        backgroundColor: const Color.fromRGBO(3, 2, 64, 1.000),
         // leading: Row(
 
         //   children: [
@@ -72,13 +72,13 @@ class _HomePageState extends State<HomePage> {
       body: Stack(
         children: [
           Container(
-            margin: EdgeInsets.all(30),
+            margin: const EdgeInsets.all(30),
             child: Material(
               borderRadius: BorderRadius.circular(10),
               elevation: 5,
               child: Container(
                 //margin: EdgeInsets.all(20),
-                padding: EdgeInsets.all(20),
+                padding: const EdgeInsets.all(20),
 
                 child: Text(
                   "Logged IN as : " + user!.email!,
@@ -91,77 +91,93 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ),
-          // Padding(
-          //   padding: const EdgeInsets.all(40.0),
-          //   child: Material(
-          //     elevation: 5,
-          //     child: Container(
-          //       decoration:
-          //           BoxDecoration(borderRadius: BorderRadius.circular(10)),
-          //       color: Colors.white,
-          //       height: 200,
-          //     ),
-          //   ),
-          // ),
           Padding(
             padding: const EdgeInsets.only(top: 250),
             child: GridView.count(
               padding: const EdgeInsets.all(30),
               crossAxisCount: 2,
               children: [
-                Column(
-                  children: [
-                    IconButton(
-                      iconSize: 80,
-                      onPressed: () {
-                        Navigator.pushNamed(context, "scanPage");
-                      },
-                      icon: const Icon(
-                        Icons.crop_free,
-                        color: Color.fromRGBO(3, 2, 64, 1.000),
-                      ),
+                Container(
+                  padding: const EdgeInsets.all(20),
+                  child: Material(
+                    elevation: 5,
+                    borderRadius: BorderRadius.circular(10),
+                    child: Column(
+                      children: [
+                        IconButton(
+                          iconSize: 80,
+                          onPressed: () {
+                            Navigator.pushNamed(context, "scanPage");
+                          },
+                          icon: const Icon(
+                            Icons.crop_free,
+                            color: Color.fromRGBO(3, 2, 64, 1.000),
+                          ),
+                        ),
+                        const Text('Scan')
+                      ],
                     ),
-                    const Text('Scan')
-                  ],
+                  ),
                 ),
-                Column(
-                  children: [
-                    IconButton(
-                      iconSize: 80,
-                      onPressed: () {},
-                      icon: const Icon(
-                        Icons.assignment,
-                        color: Color.fromRGBO(3, 2, 64, 1.000),
-                      ),
+                Container(
+                  padding: const EdgeInsets.all(20),
+                  child: Material(
+                    elevation: 5,
+                    borderRadius: BorderRadius.circular(10),
+                    child: Column(
+                      children: [
+                        IconButton(
+                          iconSize: 80,
+                          onPressed: () {},
+                          icon: const Icon(
+                            Icons.assignment,
+                            color: Color.fromRGBO(3, 2, 64, 1.000),
+                          ),
+                        ),
+                        const Text('Bill History')
+                      ],
                     ),
-                    const Text('Bill History')
-                  ],
+                  ),
                 ),
-                Column(
-                  children: [
-                    IconButton(
-                      iconSize: 80,
-                      onPressed: () {},
-                      icon: const Icon(
-                        Icons.credit_card,
-                        color: Color.fromRGBO(3, 2, 64, 1.000),
-                      ),
+                Container(
+                  padding: EdgeInsets.all(20),
+                  child: Material(
+                    elevation: 5,
+                    borderRadius: BorderRadius.circular(10),
+                    child: Column(
+                      children: [
+                        IconButton(
+                          iconSize: 80,
+                          onPressed: () {},
+                          icon: const Icon(
+                            Icons.credit_card,
+                            color: Color.fromRGBO(3, 2, 64, 1.000),
+                          ),
+                        ),
+                        const Text('Pay Bill')
+                      ],
                     ),
-                    const Text('Pay Bill')
-                  ],
+                  ),
                 ),
-                Column(
-                  children: [
-                    IconButton(
-                      iconSize: 80,
-                      onPressed: () {},
-                      icon: const Icon(
-                        Icons.person_add,
-                        color: Color.fromRGBO(3, 2, 64, 1.000),
-                      ),
+                Container(
+                  padding: const EdgeInsets.all(20),
+                  child: Material(
+                    elevation: 5,
+                    borderRadius: BorderRadius.circular(10),
+                    child: Column(
+                      children: [
+                        IconButton(
+                          iconSize: 80,
+                          onPressed: () {},
+                          icon: const Icon(
+                            Icons.person_add,
+                            color: Color.fromRGBO(3, 2, 64, 1.000),
+                          ),
+                        ),
+                        const Text('Add Account')
+                      ],
                     ),
-                    const Text('Add Account')
-                  ],
+                  ),
                 ),
               ],
             ),
