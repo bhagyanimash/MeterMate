@@ -1,14 +1,13 @@
-import 'dart:io';
-
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
+
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
-import 'package:metermate/service/database.dart';
-import 'package:random_string/random_string.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+  final Function()? onTap;
+  const LoginPage({
+    super.key,
+    required this.onTap,
+  });
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -155,7 +154,7 @@ class _LoginPageState extends State<LoginPage> {
                       width: 500,
                       child: OutlinedButton(
                         onPressed: () {
-                          Navigator.pushNamed(context, 'signUpPage');
+                          Navigator.pushNamed(context, "signUpPage");
                         },
                         style: ButtonStyle(
                           shape:
@@ -168,6 +167,18 @@ class _LoginPageState extends State<LoginPage> {
                           style: TextStyle(
                               fontSize: 18, color: Color.fromRGBO(3, 2, 64, 1)),
                         ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  GestureDetector(
+                    onTap: widget.onTap,
+                    child: const Text(
+                      "Register Now",
+                      style: TextStyle(
+                        color: const Color.fromRGBO(3, 2, 64, 1.000),
                       ),
                     ),
                   ),
