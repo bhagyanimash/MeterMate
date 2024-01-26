@@ -38,6 +38,7 @@ class _HomePageState extends State<HomePage> {
           style: TextStyle(
             fontSize: 24,
             color: Colors.white,
+
           ),
         ),
         actions: [
@@ -57,6 +58,7 @@ class _HomePageState extends State<HomePage> {
             icon: const Icon(
               Icons.account_circle,
               color: Colors.white,
+
             ),
           ),
           IconButton(
@@ -93,10 +95,13 @@ class _HomePageState extends State<HomePage> {
           ),
           Padding(
             padding: const EdgeInsets.only(top: 250),
+
+
             child: GridView.count(
               padding: const EdgeInsets.all(30),
               crossAxisCount: 2,
               children: [
+
                 Container(
                   padding: const EdgeInsets.all(20),
                   child: Material(
@@ -178,6 +183,58 @@ class _HomePageState extends State<HomePage> {
                       ],
                     ),
                   ),
+
+                Column(
+                  children: [
+                    IconButton(
+                      iconSize: 80,
+                      onPressed: () {},
+                      icon: const Icon(
+                        Icons.crop_free,
+                        color: Color.fromRGBO(3, 2, 64, 1.000),
+                      ),
+                    ),
+                    const Text('Scan')
+                  ],
+                ),
+                Column(
+                  children: [
+                    IconButton(
+                      iconSize: 80,
+                      onPressed: () {},
+                      icon: const Icon(
+                        Icons.assignment,
+                        color: Color.fromRGBO(3, 2, 64, 1.000),
+                      ),
+                    ),
+                    const Text('Bill History')
+                  ],
+                ),
+                Column(
+                  children: [
+                    IconButton(
+                      iconSize: 80,
+                      onPressed: () {},
+                      icon: const Icon(
+                        Icons.credit_card,
+                        color: Color.fromRGBO(3, 2, 64, 1.000),
+                      ),
+                    ),
+                    const Text('Pay Bill')
+                  ],
+                ),
+                Column(
+                  children: [
+                    IconButton(
+                      iconSize: 80,
+                      onPressed: () {},
+                      icon: const Icon(
+                        Icons.person_add,
+                        color: Color.fromRGBO(3, 2, 64, 1.000),
+                      ),
+                    ),
+                    const Text('Add Account')
+                  ],
                 ),
               ],
             ),
@@ -194,24 +251,31 @@ class _HomePageState extends State<HomePage> {
           NavigationDestination(
             icon: Icon(
               Icons.home,
+
               color: Color.fromRGBO(3, 2, 64, 1.000),
               size: 30,
+
+
             ),
             label: 'Home',
           ),
           NavigationDestination(
             icon: Icon(
               Icons.place,
+
               color: Color.fromRGBO(3, 2, 64, 1.000),
               size: 30,
             ),
             label: 'Outage Map',
+
           ),
           NavigationDestination(
             icon: Icon(
               Icons.calendar_month,
+
               color: Color.fromRGBO(3, 2, 64, 1.000),
               size: 30,
+
             ),
             label: 'Calender',
           ),
