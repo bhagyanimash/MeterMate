@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:metermate/pages/login_page.dart';
+import 'package:random_string/random_string.dart';
+
+import '../service/database.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
@@ -8,10 +13,33 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
+  TextEditingController usernamecontroler = new TextEditingController();
+  TextEditingController pwdcontroler = new TextEditingController();
+  TextEditingController repwdcontroler = new TextEditingController();
+  TextEditingController emailcontroler = new TextEditingController();
+  TextEditingController contactcontroler = new TextEditingController();
+  TextEditingController idcontroler = new TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: const Color.fromRGBO(3, 2, 64, 1.000),
+        leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: const Icon(
+              Icons.arrow_back,
+            )),
+        title: const Text(
+          "Sign UP",
+          style: TextStyle(
+            color: Colors.white,
+          ),
+        ),
+      ),
       body: SafeArea(
           child: SingleChildScrollView(
         child: Padding(
@@ -20,13 +48,18 @@ class _SignUpPageState extends State<SignUpPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              IconButton(
-                  iconSize: 30,
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.arrow_back,
-                    color: Colors.black,
-                  )),
+              // IconButton(
+              //     iconSize: 30,
+              //     onPressed: () {
+              //       Navigator.pushNamed(context, 'loginPage');
+              //     },
+              //     icon: const Icon(
+              //       Icons.arrow_back,
+              //       color: Colors.black,
+              //     )),
+              const SizedBox(
+                height: 20,
+              ),
               Center(
                 child: Image.asset(
                   'images/metermate.png',
@@ -37,6 +70,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 height: 44.0,
               ),
               TextField(
+                controller: usernamecontroler,
                 keyboardType: TextInputType.text,
                 decoration: InputDecoration(
                     border: OutlineInputBorder(
@@ -52,7 +86,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 height: 20.0,
               ),
               TextField(
-                obscureText: true,
+                controller: emailcontroler,
                 keyboardType: TextInputType.emailAddress,
                 decoration: InputDecoration(
                     border: OutlineInputBorder(
@@ -68,6 +102,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 height: 20.0,
               ),
               TextField(
+                controller: pwdcontroler,
                 obscureText: true,
                 decoration: InputDecoration(
                     border: OutlineInputBorder(
@@ -83,6 +118,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 height: 20.0,
               ),
               TextField(
+                controller: repwdcontroler,
                 obscureText: true,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
@@ -99,6 +135,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 height: 20.0,
               ),
               TextField(
+                controller: contactcontroler,
                 keyboardType: TextInputType.text,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
@@ -115,6 +152,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 height: 20.0,
               ),
               TextField(
+                controller: idcontroler,
                 keyboardType: TextInputType.text,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
@@ -131,18 +169,48 @@ class _SignUpPageState extends State<SignUpPage> {
                 height: 50.0,
               ),
               Center(
-                child: RawMaterialButton(
-                  fillColor: const Color.fromRGBO(3, 2, 64, 1.000),
-                  //elevation: 0.0,
-                  //padding: EdgeInsets.symmetric(),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20.0)),
-                  onPressed: () {},
-                  child: const Text(
-                    "Sign Up",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 18.0,
+                child: SizedBox(
+                  height: 50,
+                  width: 500,
+                  child: RawMaterialButton(
+                    fillColor: const Color.fromRGBO(3, 2, 64, 1.000),
+                    //elevation: 0.0,
+                    //padding: EdgeInsets.symmetric(),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20.0)),
+                    onPressed: () async {
+                      String Id = randomAlphaNumeric(10);
+                      Map<String, dynamic> userInfoMap = {
+                        "Id": Id,
+                        "Username": usernamecontroler.text,
+                        "Password": pwdcontroler.text,
+                        "Re-Password": repwdcontroler.text,
+                        "Email": emailcontroler.text,
+                        "Contact": contactcontroler.text,
+                        "ID": idcontroler.text
+                      };
+                      await DatabaseMethods()
+                          .addUserDetials(userInfoMap, Id)
+                          .then(
+                            (value) => {
+                              Fluttertoast.showToast(
+                                  msg: "Sign UP Successfully",
+                                  toastLength: Toast.LENGTH_SHORT,
+                                  gravity: ToastGravity.CENTER,
+                                  timeInSecForIosWeb: 1,
+                                  backgroundColor:
+                                      const Color.fromRGBO(3, 2, 64, 1.000),
+                                  textColor: Colors.white,
+                                  fontSize: 16.0)
+                            },
+                          );
+                    },
+                    child: const Text(
+                      "Sign UP",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 18.0,
+                      ),
                     ),
                   ),
                 ),
