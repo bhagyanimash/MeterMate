@@ -15,14 +15,13 @@ class _BillPageState extends State<BillPage> {
       backgroundColor: Colors.white,
       body: SafeArea(
         child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(16, 4, 16, 8),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                // Title "Bill Page" and Back Button in the same line
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Padding(
+                padding: const EdgeInsets.fromLTRB(16, 4, 16, 8),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     IconButton(
                       iconSize: 30,
@@ -34,121 +33,119 @@ class _BillPageState extends State<BillPage> {
                         color: Colors.black,
                       ),
                     ),
+                  ],
+                ),
+              ),
 
-                    SizedBox(height: 5.0),
+              SizedBox(height: 5.0),
 
+              Text(
+                "Bill Page",
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
 
-                    Expanded(
-                      child: Center(
-                        child: Text(
-                          "Bill Page",
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 18.0,
-                            fontWeight: FontWeight.bold,
+              SizedBox(height: 40.0),
+
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: Column(
+                  children: [
+                    TextField(
+                      keyboardType: TextInputType.text,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                        hintText: "Unit",
+                        labelText: 'Number of units used',
+                        prefixIcon: const Icon(
+                          Icons.ac_unit,
+                          color: Colors.black,
+                        ),
+                      ),
+                    ),
+
+                    SizedBox(height: 20.0),
+
+                    TextField(
+                      keyboardType: TextInputType.text,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                        hintText: "Charge",
+                        labelText: 'Charge for the month',
+                        prefixIcon: const Icon(
+                          Icons.monetization_on,
+                          color: Colors.black,
+                        ),
+                      ),
+                    ),
+
+                    SizedBox(height: 20.0),
+
+                    TextField(
+                      keyboardType: TextInputType.text,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                        hintText: "Total Amount",
+                        labelText: 'Outstanding amount',
+                        prefixIcon: const Icon(
+                          Icons.attach_money,
+                          color: Colors.black,
+                        ),
+                      ),
+                    ),
+
+                    SizedBox(height: 20.0),
+
+                    TextField(
+                      keyboardType: TextInputType.text,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                        hintText: "Payment",
+                        labelText: 'Payment amount',
+                        prefixIcon: const Icon(
+                          Icons.payment,
+                          color: Colors.black,
+                        ),
+                      ),
+                    ),
+
+                    SizedBox(height: 50.0),
+
+                    Center(
+                      child: SizedBox(
+                        height: 50,
+                        width: 500,
+                        child: RawMaterialButton(
+                          fillColor: const Color.fromRGBO(3, 2, 64, 1.000),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20.0),
+                          ),
+                          onPressed: () {},
+                          child: const Text(
+                            "Pay Now",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18.0,
+                            ),
                           ),
                         ),
                       ),
                     ),
-
                   ],
                 ),
-
-                const SizedBox(
-                  height: 80.0,
-
-                ),
-
-                TextField(
-                  keyboardType: TextInputType.text,
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                    hintText: "Unit",
-                    labelText: 'Number of units used',
-                    prefixIcon: const Icon(
-                      Icons.ac_unit,
-                      color: Colors.black,
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 20.0,
-                ),
-                TextField(
-                  keyboardType: TextInputType.text,
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                    hintText: "Charge",
-                    labelText: 'Charge for the month',
-                    prefixIcon: const Icon(
-                      Icons.monetization_on,
-                      color: Colors.black,
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 20.0,
-                ),
-                TextField(
-                  keyboardType: TextInputType.text,
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                    hintText: "Total Amount",
-                    labelText: 'Outstanding amount',
-                    prefixIcon: const Icon(
-                      Icons.attach_money,
-                      color: Colors.black,
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 20.0,
-                ),
-                TextField(
-                  keyboardType: TextInputType.text,
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                    hintText: "Payment",
-                    labelText: 'Payment amount',
-                    prefixIcon: const Icon(
-                      Icons.payment,
-                      color: Colors.black,
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 100.0,
-                ),
-                Center(
-                  child: SizedBox(
-                    height: 50,
-                    width: 200,
-                    child: RawMaterialButton(
-                      fillColor: const Color.fromRGBO(3, 2, 64, 1.000),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20.0),
-                      ),
-                      onPressed: () {},
-                      child: const Text(
-                        "Pay Now",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18.0,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
