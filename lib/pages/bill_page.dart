@@ -34,7 +34,10 @@ class _BillPageState extends State<BillPage> {
                         color: Colors.black,
                       ),
                     ),
-                    SizedBox(width: 16), // Adding space between icon and text
+
+                    SizedBox(height: 5.0),
+
+
                     Expanded(
                       child: Center(
                         child: Text(
@@ -47,12 +50,13 @@ class _BillPageState extends State<BillPage> {
                         ),
                       ),
                     ),
-                    // You can add more widgets here if needed
+
                   ],
                 ),
 
                 const SizedBox(
                   height: 80.0,
+
                 ),
 
                 TextField(
