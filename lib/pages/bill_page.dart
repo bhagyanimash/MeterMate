@@ -18,6 +18,7 @@ class _BillPageState extends State<BillPage> {
           child: Padding(
             padding: const EdgeInsets.fromLTRB(16, 4, 16, 8),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 // Title "Bill Page" and Back Button in the same line
                 Row(
@@ -33,17 +34,27 @@ class _BillPageState extends State<BillPage> {
                         color: Colors.black,
                       ),
                     ),
-                    Text(
-                      "Bill Page",
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 24.0,
-                        fontWeight: FontWeight.bold,
+                    SizedBox(width: 16), // Adding space between icon and text
+                    Expanded(
+                      child: Center(
+                        child: Text(
+                          "Bill Page",
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                       ),
                     ),
                     // You can add more widgets here if needed
                   ],
                 ),
+
+                const SizedBox(
+                  height: 80.0,
+                ),
+
                 TextField(
                   keyboardType: TextInputType.text,
                   decoration: InputDecoration(
@@ -62,8 +73,7 @@ class _BillPageState extends State<BillPage> {
                   height: 20.0,
                 ),
                 TextField(
-                  obscureText: true,
-                  keyboardType: TextInputType.emailAddress,
+                  keyboardType: TextInputType.text,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(30),
@@ -80,7 +90,7 @@ class _BillPageState extends State<BillPage> {
                   height: 20.0,
                 ),
                 TextField(
-                  obscureText: true,
+                  keyboardType: TextInputType.text,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(30),
@@ -97,7 +107,7 @@ class _BillPageState extends State<BillPage> {
                   height: 20.0,
                 ),
                 TextField(
-                  obscureText: true,
+                  keyboardType: TextInputType.text,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(30),
@@ -111,7 +121,7 @@ class _BillPageState extends State<BillPage> {
                   ),
                 ),
                 const SizedBox(
-                  height: 20.0,
+                  height: 100.0,
                 ),
                 Center(
                   child: SizedBox(
@@ -141,4 +151,3 @@ class _BillPageState extends State<BillPage> {
     );
   }
 }
-
