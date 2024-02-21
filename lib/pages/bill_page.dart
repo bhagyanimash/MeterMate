@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:metermate/pages/home_page.dart';
 
-class billPage extends StatefulWidget {
-  const billPage({Key? key}) : super(key: key);
+class BillPage extends StatefulWidget {
+  const BillPage({Key? key}) : super(key: key);
 
   @override
-  State<billPage> createState() => _BillPageState();
+  State<BillPage> createState() => _BillPageState();
 }
 
-class _BillPageState extends State<billPage> {
+class _BillPageState extends State<BillPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,35 +17,33 @@ class _BillPageState extends State<billPage> {
         child: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.fromLTRB(16, 4, 16, 8),
-            children: [
-              // Title "Bill Page" and Back Button in the same line
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  IconButton(
-                    iconSize: 30,
-                    onPressed: () {
-                      Navigator.pushNamed(context, 'loginPage');
-                    },
-                    icon: const Icon(
-                      Icons.arrow_back,
-                      color: Colors.black,
+            child: Column(
+              children: [
+                // Title "Bill Page" and Back Button in the same line
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    IconButton(
+                      iconSize: 30,
+                      onPressed: () {
+                        Navigator.pushNamed(context, 'loginPage');
+                      },
+                      icon: const Icon(
+                        Icons.arrow_back,
+                        color: Colors.black,
+                      ),
                     ),
-                  ),
-                  Text(
-                    "Bill Page",
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 24.0,
-                      fontWeight: FontWeight.bold,
+                    Text(
+                      "Bill Page",
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 24.0,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
-                  ),
-                  // You can add more widgets here if needed
-                ],
-              ),
-
-
-
+                    // You can add more widgets here if needed
+                  ],
+                ),
                 TextField(
                   keyboardType: TextInputType.text,
                   decoration: InputDecoration(
@@ -118,7 +116,7 @@ class _BillPageState extends State<billPage> {
                 Center(
                   child: SizedBox(
                     height: 50,
-                    width: 500,
+                    width: 200,
                     child: RawMaterialButton(
                       fillColor: const Color.fromRGBO(3, 2, 64, 1.000),
                       shape: RoundedRectangleBorder(
@@ -143,3 +141,4 @@ class _BillPageState extends State<billPage> {
     );
   }
 }
+

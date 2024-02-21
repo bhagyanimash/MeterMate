@@ -5,6 +5,10 @@ import 'package:metermate/pages/loading_page.dart';
 import 'package:metermate/pages/login_page.dart';
 import 'package:metermate/pages/qr_scan_page.dart';
 import 'package:metermate/pages/signup_page.dart';
+import 'package:metermate/pages/pay_now_page.dart';
+import 'package:metermate/pages/bill_history_page.dart';
+import 'package:metermate/pages/add_account_page.dart';
+
 
 void main() {
   runApp(const MeterMate());
@@ -17,13 +21,17 @@ class MeterMate extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const billPage(),
+      home: const BillPage(),
       routes: {
         'loginPage': (context) => const LoginPage(),
         'signUpPage': (context) => const SignUpPage(),
         'homePage': (context) => const HomePage(),
         'scanPage': (context) => const QRscanPage(),
-        'billPage': (context) => const billPage()
+        'billPage': (context) => const BillPage(),
+        'billHistoryPage': (context) => const BillHistoryPage(),
+        'addAccountPage': (context) => const AddAccountPage(),
+        'PayNowPage': (context) => const PayNowPage(),
+
       },
     );
   }
