@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import '../app_bar.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -11,61 +10,78 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final user = FirebaseAuth.instance.currentUser;
+  late String _userName;
   void signUserOut() {
     FirebaseAuth.instance.signOut();
   }
 
   @override
+  // void initState() {
+  //   super.initState();
+  //   _loadUserName();
+  // }
+
+  // Future<void> _loadUserName() async {
+  //   User? user = FirebaseAuth.instance.currentUser;
+  //   if (user != null) {
+  //     setState(() {
+  //       _userName = user.displayName ?? '';
+  //     });
+  //   }
+  // }
+
+  @override
   Widget build(BuildContext context) {
+    /*User? user = FirebaseAuth.instance.currentUser;
+    userName = user?.displayName ?? '';*/
     // ignore: prefer_const_constructors
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color.fromRGBO(3, 2, 64, 1.000),
-        // leading: Row(
-
-        //   children: [
-
-        //     const Padding(padding: EdgeInsets.only(left: 15)),
-        //     Image.asset(
-
-        //       'images/onlylogo.png',
-        //       width: 40,
-        //     ),
-        //   ],
-        //),
+        toolbarHeight: 70,
+        backgroundColor: const Color.fromRGBO(233, 230, 242, 1.000),
+        leading: Row(
+          children: [
+            const Padding(padding: EdgeInsets.only(left: 15)),
+            Image.asset(
+              'images/onlylogo.png',
+              width: 40,
+            ),
+          ],
+        ),
         title: const Text(
           "MeterMate",
           style: TextStyle(
-            fontSize: 24,
-            color: Colors.white,
+            fontWeight: FontWeight.bold,
+            fontSize: 26,
+            color: Color.fromRGBO(3, 2, 64, 1.000),
           ),
         ),
         actions: [
           IconButton(
-            //iconSize: 30,
+            iconSize: 30,
             onPressed: () {},
             icon: const Icon(
               Icons.notifications,
-              color: Colors.white,
+              color: Color.fromRGBO(3, 2, 64, 1.000),
             ),
           ),
           IconButton(
-            //iconSize: 30,
+            iconSize: 30,
             onPressed: () {
               Navigator.pushNamed(context, "userDetails");
             },
             icon: const Icon(
               Icons.account_circle,
-              color: Colors.white,
+              color: Color.fromRGBO(3, 2, 64, 1.000),
             ),
           ),
           IconButton(
-            //iconSize: 30,
+            iconSize: 30,
             onPressed: () {
               signUserOut();
             },
             icon: const Icon(Icons.logout),
-            color: Colors.white,
+            color: Color.fromRGBO(3, 2, 64, 1.000),
           ),
         ],
       ),
@@ -81,7 +97,7 @@ class _HomePageState extends State<HomePage> {
                 padding: const EdgeInsets.all(20),
 
                 child: Text(
-                  "Logged IN as : " + user!.email!,
+                  "Logged IN as :" + user!.email!,
                   style: const TextStyle(
                     fontSize: 20,
                     color: Colors.black,
@@ -168,7 +184,9 @@ class _HomePageState extends State<HomePage> {
                       children: [
                         IconButton(
                           iconSize: 80,
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.pushNamed(context, 'addAccountPage');
+                          },
                           icon: const Icon(
                             Icons.person_add,
                             color: Color.fromRGBO(3, 2, 64, 1.000),

@@ -6,27 +6,26 @@ import 'package:random_string/random_string.dart';
 
 import '../service/database.dart';
 
-class SignUpPage extends StatefulWidget {
-  const SignUpPage({super.key});
+class AddAccountPage extends StatefulWidget {
+  const AddAccountPage({super.key});
 
   @override
-  State<SignUpPage> createState() => _SignUpPageState();
+  State<AddAccountPage> createState() => _AddAccountPageState();
 }
 
-class _SignUpPageState extends State<SignUpPage> {
-  TextEditingController usernamecontroler = new TextEditingController();
-  TextEditingController pwdcontroler = new TextEditingController();
-  TextEditingController repwdcontroler = new TextEditingController();
-  TextEditingController emailcontroler = new TextEditingController();
-  TextEditingController contactcontroler = new TextEditingController();
-  TextEditingController idcontroler = new TextEditingController();
+class _AddAccountPageState extends State<AddAccountPage> {
+  TextEditingController nameControler = new TextEditingController();
+  TextEditingController accNumberControler = new TextEditingController();
+  TextEditingController addressControler = new TextEditingController();
+  TextEditingController contactControler = new TextEditingController();
+  TextEditingController idControler = new TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: const Color.fromRGBO(233, 230, 242, 1.000),
+        backgroundColor: Color.fromRGBO(233, 230, 242, 1.000),
         leading: IconButton(
             onPressed: () {
               Navigator.pop(context);
@@ -35,9 +34,9 @@ class _SignUpPageState extends State<SignUpPage> {
               Icons.arrow_back,
             )),
         title: const Text(
-          "Sign UP",
+          "Add Account",
           style: TextStyle(
-            color: Colors.white,
+            color: Colors.black,
           ),
         ),
       ),
@@ -49,121 +48,75 @@ class _SignUpPageState extends State<SignUpPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // IconButton(
-              //     iconSize: 30,
-              //     onPressed: () {
-              //       Navigator.pushNamed(context, 'loginPage');
-              //     },
-              //     icon: const Icon(
-              //       Icons.arrow_back,
-              //       color: Colors.black,
-              //     )),
               const SizedBox(
                 height: 20,
-              ),
-              Center(
-                child: Image.asset(
-                  'images/metermate.png',
-                  width: 100,
-                ),
               ),
               const SizedBox(
                 height: 44.0,
               ),
               TextField(
-                controller: usernamecontroler,
+                controller: nameControler,
                 keyboardType: TextInputType.text,
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                    hintText: "Username",
-                    prefixIcon: const Icon(
-                      Icons.person_outline,
-                      color: Colors.black,
-                    )),
-              ),
-              const SizedBox(
-                height: 20.0,
-              ),
-              TextField(
-                controller: emailcontroler,
-                keyboardType: TextInputType.emailAddress,
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                    hintText: "Email Address",
-                    prefixIcon: const Icon(
-                      Icons.mail_outline,
-                      color: Colors.black,
-                    )),
-              ),
-              const SizedBox(
-                height: 20.0,
-              ),
-              TextField(
-                controller: pwdcontroler,
-                obscureText: true,
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                    hintText: "Password",
-                    prefixIcon: const Icon(
-                      Icons.lock_outlined,
-                      color: Colors.black,
-                    )),
-              ),
-              const SizedBox(
-                height: 20.0,
-              ),
-              TextField(
-                controller: repwdcontroler,
-                obscureText: true,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(30),
                   ),
-                  hintText: "Re-Enter Password",
-                  prefixIcon: const Icon(
-                    Icons.password,
-                    color: Colors.black,
-                  ),
+                  hintText: "Full Name",
+                  // prefixIcon: const Icon(
+                  //   Icons.person_outline,
+                  //   color: Colors.black,
+                  // ),
                 ),
               ),
               const SizedBox(
                 height: 20.0,
               ),
               TextField(
-                controller: contactcontroler,
+                controller: accNumberControler,
                 keyboardType: TextInputType.text,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(30),
                   ),
-                  hintText: "Contact Number",
-                  prefixIcon: const Icon(
-                    Icons.call_outlined,
-                    color: Colors.black,
-                  ),
+                  hintText: "Account Number",
+                  // prefixIcon: const Icon(
+                  //   Icons.,
+                  //   color: Colors.black,
+                  // ),
                 ),
               ),
               const SizedBox(
                 height: 20.0,
               ),
               TextField(
-                controller: idcontroler,
+                controller: addressControler,
+                keyboardType: TextInputType.text,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                  hintText: "Address",
+                  // prefixIcon: const Icon(
+                  //   Icons.dock,
+                  //   color: Colors.black,
+                  // ),
+                ),
+              ),
+              const SizedBox(
+                height: 20.0,
+              ),
+              TextField(
+                controller: idControler,
                 keyboardType: TextInputType.text,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(30),
                   ),
                   hintText: "NIC Number",
-                  prefixIcon: const Icon(
-                    Icons.dock,
-                    color: Colors.black,
-                  ),
+                  // prefixIcon: const Icon(
+                  //   Icons.dock,
+                  //   color: Colors.black,
+                  // ),
                 ),
               ),
               const SizedBox(
@@ -184,19 +137,17 @@ class _SignUpPageState extends State<SignUpPage> {
                       User? currentUser = FirebaseAuth.instance.currentUser;
                       Map<String, dynamic> userInfoMap = {
                         "Id": currentUser!.uid,
-                        "Username": usernamecontroler.text,
-                        "Password": pwdcontroler.text,
-                        "Re-Password": repwdcontroler.text,
-                        "Email": emailcontroler.text,
-                        "Contact": contactcontroler.text,
-                        "ID": idcontroler.text
+                        "Full Name": nameControler.text,
+                        "Account Number": accNumberControler.text,
+                        "Address": addressControler.text,
+                        "NIC": idControler.text
                       };
                       await DatabaseMethods()
                           .addUserDetials(userInfoMap, currentUser.uid)
                           .then(
                             (value) => {
                               Fluttertoast.showToast(
-                                  msg: "Sign UP Successfully",
+                                  msg: "Successfully Added",
                                   toastLength: Toast.LENGTH_SHORT,
                                   gravity: ToastGravity.CENTER,
                                   timeInSecForIosWeb: 1,
@@ -208,7 +159,7 @@ class _SignUpPageState extends State<SignUpPage> {
                           );
                     },
                     child: const Text(
-                      "Sign UP",
+                      "ADD",
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 18.0,

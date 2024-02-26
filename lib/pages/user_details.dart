@@ -47,21 +47,28 @@ class _UserDetailState extends State<UserDetail> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                "Username: " + ds["Username"],
+                                "Full Name: " + ds["Full Name"],
                                 style: const TextStyle(
                                     fontSize: 20,
                                     color: Colors.black,
                                     fontWeight: FontWeight.bold),
                               ),
                               Text(
-                                "Password: " + ds["Password"],
+                                "Account Number: " + ds["Account Number"],
                                 style: const TextStyle(
                                     fontSize: 20,
                                     color: Colors.black,
                                     fontWeight: FontWeight.bold),
                               ),
                               Text(
-                                "Email: " + ds["Email"],
+                                "Address: " + ds["Address"],
+                                style: const TextStyle(
+                                    fontSize: 20,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              Text(
+                                "NIC Number: " + ds["NIC"],
                                 style: const TextStyle(
                                     fontSize: 20,
                                     color: Colors.black,
@@ -80,8 +87,9 @@ class _UserDetailState extends State<UserDetail> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: const Color.fromRGBO(3, 2, 64, 1.000),
+        backgroundColor: Color.fromRGBO(233, 230, 242, 1.000),
         title: Text('User Details'),
       ),
       body: Container(

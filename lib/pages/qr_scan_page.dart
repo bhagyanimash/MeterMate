@@ -13,11 +13,11 @@ class _QRscanPageState extends State<QRscanPage> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: const Color.fromRGBO(3, 2, 64, 1.000),
+        backgroundColor: Color.fromRGBO(233, 230, 242, 1.000),
         elevation: 0,
         title: const Text(
           'Scan Meter QR',
-          style: TextStyle(color: Colors.white),
+          style: TextStyle(color: Colors.black),
         ),
       ),
       body: Center(
@@ -32,7 +32,7 @@ class _QRscanPageState extends State<QRscanPage> {
                 borderRadius: BorderRadius.circular(20.0)),
             onPressed: () {},
             child: const Text(
-              "Scan Meter Board",
+              "Scan QR",
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 18.0,

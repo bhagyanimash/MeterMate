@@ -19,12 +19,13 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
-  final usernamecontroler = TextEditingController();
+  final TextEditingController usernamecontroler = TextEditingController();
   final pwdcontroler = TextEditingController();
   final confirmpwdcontroler = TextEditingController();
   final emailcontroler = TextEditingController();
+  String? _username;
 
-  void signUserUp() async {
+  Future<void> signUserUp() async {
     showDialog(
         context: context,
         builder: (context) {
@@ -34,12 +35,19 @@ class _SignUpState extends State<SignUp> {
         });
 
     try {
+      User? user = FirebaseAuth.instance.currentUser;
+      await user?.updateDisplayName(usernamecontroler.text);
+      setState(() {
+        _username =
+            usernamecontroler.text; // Set _username and trigger UI update
+      });
       if (pwdcontroler.text == confirmpwdcontroler.text) {
         await FirebaseAuth.instance.createUserWithEmailAndPassword(
             email: emailcontroler.text, password: pwdcontroler.text);
       } else {
         showErrorMessage("Password dosent match");
       }
+
       Navigator.pop(context);
     } on FirebaseAuthException catch (e) {
       Navigator.pop(context);
@@ -88,7 +96,7 @@ class _SignUpState extends State<SignUp> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(
-                height: 20,
+                height: 40,
               ),
               Center(
                 child: Image.asset(
@@ -98,6 +106,22 @@ class _SignUpState extends State<SignUp> {
               ),
               const SizedBox(
                 height: 44.0,
+              ),
+              const SizedBox(
+                height: 20.0,
+              ),
+              TextField(
+                controller: usernamecontroler,
+                keyboardType: TextInputType.text,
+                decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                    hintText: "Username",
+                    prefixIcon: const Icon(
+                      Icons.mail_outline,
+                      color: Colors.black,
+                    )),
               ),
               const SizedBox(
                 height: 20.0,
@@ -163,6 +187,7 @@ class _SignUpState extends State<SignUp> {
                         borderRadius: BorderRadius.circular(20.0)),
                     onPressed: () async {
                       signUserUp();
+                      //Navigator.pushNamed(context, 'loginPage');
                     },
                     child: const Text(
                       "Sign UP",
