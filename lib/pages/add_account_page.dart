@@ -49,10 +49,17 @@ class _AddAccountPageState extends State<AddAccountPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(
-                height: 20,
-              ),
-              const SizedBox(
                 height: 44.0,
+              ),
+              const Padding(
+                padding: const EdgeInsets.only(left: 12.0),
+                child: Text(
+                  "Full Name",
+                  style: TextStyle(
+                      fontSize: 18,
+                      color: Color.fromRGBO(3, 2, 64, 1.000),
+                      fontWeight: FontWeight.bold),
+                ),
               ),
               TextField(
                 controller: nameControler,
@@ -71,6 +78,16 @@ class _AddAccountPageState extends State<AddAccountPage> {
               const SizedBox(
                 height: 20.0,
               ),
+              const Padding(
+                padding: const EdgeInsets.only(left: 12.0),
+                child: Text(
+                  "Account Number",
+                  style: TextStyle(
+                      fontSize: 18,
+                      color: Color.fromRGBO(3, 2, 64, 1.000),
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
               TextField(
                 controller: accNumberControler,
                 keyboardType: TextInputType.text,
@@ -87,6 +104,16 @@ class _AddAccountPageState extends State<AddAccountPage> {
               ),
               const SizedBox(
                 height: 20.0,
+              ),
+              const Padding(
+                padding: const EdgeInsets.only(left: 12.0),
+                child: Text(
+                  "Address",
+                  style: TextStyle(
+                      fontSize: 18,
+                      color: Color.fromRGBO(3, 2, 64, 1.000),
+                      fontWeight: FontWeight.bold),
+                ),
               ),
               TextField(
                 controller: addressControler,
@@ -105,6 +132,16 @@ class _AddAccountPageState extends State<AddAccountPage> {
               const SizedBox(
                 height: 20.0,
               ),
+              const Padding(
+                padding: const EdgeInsets.only(left: 12.0),
+                child: Text(
+                  "NIC Number",
+                  style: TextStyle(
+                      fontSize: 18,
+                      color: Color.fromRGBO(3, 2, 64, 1.000),
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
               TextField(
                 controller: idControler,
                 keyboardType: TextInputType.text,
@@ -120,7 +157,7 @@ class _AddAccountPageState extends State<AddAccountPage> {
                 ),
               ),
               const SizedBox(
-                height: 50.0,
+                height: 60.0,
               ),
               Center(
                 child: SizedBox(

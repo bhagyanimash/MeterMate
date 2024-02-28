@@ -105,10 +105,20 @@ class _SignUpState extends State<SignUp> {
                 ),
               ),
               const SizedBox(
-                height: 44.0,
+                height: 20.0,
               ),
               const SizedBox(
                 height: 20.0,
+              ),
+              const Padding(
+                padding: const EdgeInsets.only(left: 12.0),
+                child: Text(
+                  "Username",
+                  style: TextStyle(
+                      fontSize: 18,
+                      color: Color.fromRGBO(3, 2, 64, 1.000),
+                      fontWeight: FontWeight.bold),
+                ),
               ),
               TextField(
                 controller: usernamecontroler,
@@ -119,12 +129,22 @@ class _SignUpState extends State<SignUp> {
                     ),
                     hintText: "Username",
                     prefixIcon: const Icon(
-                      Icons.mail_outline,
+                      Icons.account_circle_outlined,
                       color: Colors.black,
                     )),
               ),
               const SizedBox(
                 height: 20.0,
+              ),
+              const Padding(
+                padding: const EdgeInsets.only(left: 12.0),
+                child: Text(
+                  "Email Address",
+                  style: TextStyle(
+                      fontSize: 18,
+                      color: Color.fromRGBO(3, 2, 64, 1.000),
+                      fontWeight: FontWeight.bold),
+                ),
               ),
               TextField(
                 controller: emailcontroler,
@@ -142,6 +162,16 @@ class _SignUpState extends State<SignUp> {
               const SizedBox(
                 height: 20.0,
               ),
+              const Padding(
+                padding: const EdgeInsets.only(left: 12.0),
+                child: Text(
+                  "Password",
+                  style: TextStyle(
+                      fontSize: 18,
+                      color: Color.fromRGBO(3, 2, 64, 1.000),
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
               TextField(
                 controller: pwdcontroler,
                 obscureText: true,
@@ -158,6 +188,16 @@ class _SignUpState extends State<SignUp> {
               const SizedBox(
                 height: 20.0,
               ),
+              const Padding(
+                padding: const EdgeInsets.only(left: 12.0),
+                child: Text(
+                  "Confirm Password",
+                  style: TextStyle(
+                      fontSize: 18,
+                      color: Color.fromRGBO(3, 2, 64, 1.000),
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
               TextField(
                 controller: confirmpwdcontroler,
                 obscureText: true,
@@ -173,7 +213,7 @@ class _SignUpState extends State<SignUp> {
                 ),
               ),
               const SizedBox(
-                height: 20.0,
+                height: 40.0,
               ),
               Center(
                 child: SizedBox(
@@ -208,6 +248,8 @@ class _SignUpState extends State<SignUp> {
                   child: const Text(
                     "Login Now",
                     style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
                       color: Color.fromRGBO(3, 2, 64, 1.000),
                     ),
                   ),

@@ -72,6 +72,7 @@ class _LoginPageState extends State<LoginPage> {
                   const SizedBox(
                     height: 44.0,
                   ),
+
                   TextField(
                     controller: emailcontroler,
                     keyboardType: TextInputType.emailAddress,
@@ -148,36 +149,36 @@ class _LoginPageState extends State<LoginPage> {
                   const SizedBox(
                     height: 10.0,
                   ),
-                  Center(
-                    child: SizedBox(
-                      height: 50,
-                      width: 500,
-                      child: OutlinedButton(
-                        onPressed: () {
-                          Navigator.pushNamed(context, "signUpPage");
-                        },
-                        style: ButtonStyle(
-                          shape:
-                              MaterialStateProperty.all(RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20.0),
-                          )),
-                        ),
-                        child: const Text(
-                          "Sign Up",
-                          style: TextStyle(
-                              fontSize: 18, color: Color.fromRGBO(3, 2, 64, 1)),
-                        ),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
+                  // Center(
+                  //   child: SizedBox(
+                  //     height: 50,
+                  //     width: 500,
+                  //     child: OutlinedButton(
+                  //       onPressed: () {
+                  //         Navigator.pushNamed(context, "signUpPage");
+                  //       },
+                  //       style: ButtonStyle(
+                  //         shape:
+                  //             MaterialStateProperty.all(RoundedRectangleBorder(
+                  //           borderRadius: BorderRadius.circular(20.0),
+                  //         )),
+                  //       ),
+                  //       child: const Text(
+                  //         "Sign Up",
+                  //         style: TextStyle(
+                  //             fontSize: 18, color: Color.fromRGBO(3, 2, 64, 1)),
+                  //       ),
+                  //     ),
+                  //   ),
+                  // ),
+
                   GestureDetector(
                     onTap: widget.onTap,
                     child: const Text(
                       "Register Now",
                       style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
                         color: const Color.fromRGBO(3, 2, 64, 1.000),
                       ),
                     ),

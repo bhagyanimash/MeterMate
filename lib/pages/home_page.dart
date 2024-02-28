@@ -97,7 +97,7 @@ class _HomePageState extends State<HomePage> {
                 padding: const EdgeInsets.all(20),
 
                 child: Text(
-                  "Logged IN as :" + user!.email!,
+                  "Logged IN as : " + user!.email!,
                   style: const TextStyle(
                     fontSize: 20,
                     color: Colors.black,
@@ -123,7 +123,7 @@ class _HomePageState extends State<HomePage> {
                         IconButton(
                           iconSize: 80,
                           onPressed: () {
-                            Navigator.pushNamed(context, "scanPage");
+                            Navigator.pushNamed(context, "qrScanPage");
                           },
                           icon: const Icon(
                             Icons.crop_free,
