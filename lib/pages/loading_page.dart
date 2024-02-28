@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:metermate/pages/auth_page.dart';
 
-import 'login_page.dart';
-
 class LoadingPage extends StatefulWidget {
   const LoadingPage({super.key});
 
