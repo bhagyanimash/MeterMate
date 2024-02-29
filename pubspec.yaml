@@ -25,6 +25,10 @@ dependencies:
   firebase_auth: ^4.16.0
   qr_flutter: ^4.1.0
   flutter_barcode_scanner: ^2.0.0
+  google_ml_kit: ^0.16.3
+  image_picker: ^1.0.7
+  image: ^4.1.7
+
   
   
   
