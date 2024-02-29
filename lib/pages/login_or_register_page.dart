@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:metermate/pages/login_page.dart';
-import 'package:metermate/pages/signup.dart';
+import 'package:metermate/pages/signup_page.dart';
 
 class LoginOrRegisterPage extends StatefulWidget {
   const LoginOrRegisterPage({super.key});

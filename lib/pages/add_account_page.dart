@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-
 import '../service/database.dart';
 
 class AddAccountPage extends StatefulWidget {
@@ -178,7 +177,7 @@ class _AddAccountPageState extends State<AddAccountPage> {
                         "NIC": idControler.text
                       };
                       await DatabaseMethods()
-                          .addUserDetials(userInfoMap, currentUser.uid)
+                          .addUserDetails(userInfoMap, currentUser.uid)
                           .then(
                             (value) => {
                               Fluttertoast.showToast(

@@ -7,7 +7,7 @@ import 'package:metermate/pages/home_page.dart';
 import 'package:metermate/pages/loading_page.dart';
 import 'package:metermate/pages/meter_scan_page.dart';
 import 'package:metermate/pages/qr_scan_page.dart';
-import 'package:metermate/pages/signup_page.dart';
+
 import 'package:metermate/pages/user_details.dart';
 
 void main() async {
@@ -26,7 +26,7 @@ class MeterMate extends StatelessWidget {
       home: const LoadingPage(),
       routes: {
         //'loginPage': (context) => const LoginPage(),
-        'signUpPage': (context) => const SignUpPage(),
+
         'homePage': (context) => const HomePage(),
         'qrScanPage': (context) => const QRscanPage(),
         'userDetails': (context) => const UserDetail(),

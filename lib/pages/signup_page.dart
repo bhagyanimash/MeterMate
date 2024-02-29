@@ -1,44 +1,86 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 
-import '../service/database.dart';
-
-class SignUpPage extends StatefulWidget {
-  const SignUpPage({super.key});
+class SignUp extends StatefulWidget {
+  final Function()? onTap;
+  const SignUp({
+    super.key,
+    required this.onTap,
+  });
 
   @override
-  State<SignUpPage> createState() => _SignUpPageState();
+  State<SignUp> createState() => _SignUpState();
 }
 
-class _SignUpPageState extends State<SignUpPage> {
-  TextEditingController usernamecontroler = new TextEditingController();
-  TextEditingController pwdcontroler = new TextEditingController();
-  TextEditingController repwdcontroler = new TextEditingController();
-  TextEditingController emailcontroler = new TextEditingController();
-  TextEditingController contactcontroler = new TextEditingController();
-  TextEditingController idcontroler = new TextEditingController();
+class _SignUpState extends State<SignUp> {
+  final TextEditingController usernamecontroler = TextEditingController();
+  final pwdcontroler = TextEditingController();
+  final confirmpwdcontroler = TextEditingController();
+  final emailcontroler = TextEditingController();
+  String? _username;
+
+  Future<void> signUserUp() async {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        });
+
+    try {
+      User? user = FirebaseAuth.instance.currentUser;
+      await user?.updateDisplayName(usernamecontroler.text);
+      setState(() {
+        _username =
+            usernamecontroler.text; // Set _username and trigger UI update
+      });
+      if (pwdcontroler.text == confirmpwdcontroler.text) {
+        await FirebaseAuth.instance.createUserWithEmailAndPassword(
+            email: emailcontroler.text, password: pwdcontroler.text);
+      } else {
+        showErrorMessage("Password dosent match");
+      }
+
+      Navigator.pop(context);
+    } on FirebaseAuthException catch (e) {
+      Navigator.pop(context);
+      showErrorMessage(e.code);
+    }
+  }
+
+  void showErrorMessage(String message) {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Center(
+              child: Text(message),
+            ),
+          );
+        });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: const Color.fromRGBO(233, 230, 242, 1.000),
-        leading: IconButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            icon: const Icon(
-              Icons.arrow_back,
-            )),
-        title: const Text(
-          "Sign UP",
-          style: TextStyle(
-            color: Colors.white,
-          ),
-        ),
-      ),
+      // appBar: AppBar(
+      //   backgroundColor: const Color.fromRGBO(3, 2, 64, 1.000),
+      //   // leading: IconButton(
+      //   //     onPressed: () {
+      //   //       Navigator.pushNamed(context, 'loginpage');
+      //   //     },
+      //   //     icon: const Icon(
+      //   //       Icons.arrow_back,
+      //   //     )),
+      //   title: const Text(
+      //     "Sign UP",
+      //     style: TextStyle(
+      //       color: Colors.white,
+      //     ),
+      //   ),
+      // ),
       body: SafeArea(
           child: SingleChildScrollView(
         child: Padding(
@@ -47,17 +89,8 @@ class _SignUpPageState extends State<SignUpPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // IconButton(
-              //     iconSize: 30,
-              //     onPressed: () {
-              //       Navigator.pushNamed(context, 'loginPage');
-              //     },
-              //     icon: const Icon(
-              //       Icons.arrow_back,
-              //       color: Colors.black,
-              //     )),
               const SizedBox(
-                height: 20,
+                height: 40,
               ),
               Center(
                 child: Image.asset(
@@ -66,7 +99,20 @@ class _SignUpPageState extends State<SignUpPage> {
                 ),
               ),
               const SizedBox(
-                height: 44.0,
+                height: 20.0,
+              ),
+              const SizedBox(
+                height: 20.0,
+              ),
+              const Padding(
+                padding: const EdgeInsets.only(left: 12.0),
+                child: Text(
+                  "Username",
+                  style: TextStyle(
+                      fontSize: 18,
+                      color: Color.fromRGBO(3, 2, 64, 1.000),
+                      fontWeight: FontWeight.bold),
+                ),
               ),
               TextField(
                 controller: usernamecontroler,
@@ -77,12 +123,22 @@ class _SignUpPageState extends State<SignUpPage> {
                     ),
                     hintText: "Username",
                     prefixIcon: const Icon(
-                      Icons.person_outline,
+                      Icons.account_circle_outlined,
                       color: Colors.black,
                     )),
               ),
               const SizedBox(
                 height: 20.0,
+              ),
+              const Padding(
+                padding: const EdgeInsets.only(left: 12.0),
+                child: Text(
+                  "Email Address",
+                  style: TextStyle(
+                      fontSize: 18,
+                      color: Color.fromRGBO(3, 2, 64, 1.000),
+                      fontWeight: FontWeight.bold),
+                ),
               ),
               TextField(
                 controller: emailcontroler,
@@ -100,6 +156,16 @@ class _SignUpPageState extends State<SignUpPage> {
               const SizedBox(
                 height: 20.0,
               ),
+              const Padding(
+                padding: const EdgeInsets.only(left: 12.0),
+                child: Text(
+                  "Password",
+                  style: TextStyle(
+                      fontSize: 18,
+                      color: Color.fromRGBO(3, 2, 64, 1.000),
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
               TextField(
                 controller: pwdcontroler,
                 obscureText: true,
@@ -116,14 +182,24 @@ class _SignUpPageState extends State<SignUpPage> {
               const SizedBox(
                 height: 20.0,
               ),
+              const Padding(
+                padding: const EdgeInsets.only(left: 12.0),
+                child: Text(
+                  "Confirm Password",
+                  style: TextStyle(
+                      fontSize: 18,
+                      color: Color.fromRGBO(3, 2, 64, 1.000),
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
               TextField(
-                controller: repwdcontroler,
+                controller: confirmpwdcontroler,
                 obscureText: true,
                 decoration: InputDecoration(
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(30),
                   ),
-                  hintText: "Re-Enter Password",
+                  hintText: "Confirm Password",
                   prefixIcon: const Icon(
                     Icons.password,
                     color: Colors.black,
@@ -131,41 +207,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 ),
               ),
               const SizedBox(
-                height: 20.0,
-              ),
-              TextField(
-                controller: contactcontroler,
-                keyboardType: TextInputType.text,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(30),
-                  ),
-                  hintText: "Contact Number",
-                  prefixIcon: const Icon(
-                    Icons.call_outlined,
-                    color: Colors.black,
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: 20.0,
-              ),
-              TextField(
-                controller: idcontroler,
-                keyboardType: TextInputType.text,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(30),
-                  ),
-                  hintText: "NIC Number",
-                  prefixIcon: const Icon(
-                    Icons.dock,
-                    color: Colors.black,
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: 50.0,
+                height: 40.0,
               ),
               Center(
                 child: SizedBox(
@@ -178,32 +220,8 @@ class _SignUpPageState extends State<SignUpPage> {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20.0)),
                     onPressed: () async {
-                      //String Id = randomAlphaNumeric(10);
-                      User? currentUser = FirebaseAuth.instance.currentUser;
-                      Map<String, dynamic> userInfoMap = {
-                        "Id": currentUser!.uid,
-                        "Username": usernamecontroler.text,
-                        "Password": pwdcontroler.text,
-                        "Re-Password": repwdcontroler.text,
-                        "Email": emailcontroler.text,
-                        "Contact": contactcontroler.text,
-                        "ID": idcontroler.text
-                      };
-                      await DatabaseMethods()
-                          .addUserDetials(userInfoMap, currentUser.uid)
-                          .then(
-                            (value) => {
-                              Fluttertoast.showToast(
-                                  msg: "Sign UP Successfully",
-                                  toastLength: Toast.LENGTH_SHORT,
-                                  gravity: ToastGravity.CENTER,
-                                  timeInSecForIosWeb: 1,
-                                  backgroundColor:
-                                      const Color.fromRGBO(3, 2, 64, 1.000),
-                                  textColor: Colors.white,
-                                  fontSize: 16.0)
-                            },
-                          );
+                      signUserUp();
+                      //Navigator.pushNamed(context, 'loginPage');
                     },
                     child: const Text(
                       "Sign UP",
@@ -211,6 +229,22 @@ class _SignUpPageState extends State<SignUpPage> {
                         color: Colors.white,
                         fontSize: 18.0,
                       ),
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              Center(
+                child: GestureDetector(
+                  onTap: widget.onTap,
+                  child: const Text(
+                    "Login Now",
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: Color.fromRGBO(3, 2, 64, 1.000),
                     ),
                   ),
                 ),
