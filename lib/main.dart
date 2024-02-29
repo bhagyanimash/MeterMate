@@ -1,6 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:metermate/firebase_options.dart';
+import 'package:metermate/services/firebase_options.dart';
 import 'package:metermate/pages/add_account_page.dart';
 import 'package:metermate/pages/auth_page.dart';
 import 'package:metermate/pages/home_page.dart';

@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:metermate/service/database.dart';
+import 'package:metermate/services/database.dart';
 
 class UserDetail extends StatefulWidget {
   const UserDetail({super.key});

@@ -1,7 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import '../service/database.dart';
+import 'package:random_string/random_string.dart';
+import '../services/database.dart';
 
 class AddAccountPage extends StatefulWidget {
   const AddAccountPage({super.key});
@@ -171,6 +172,7 @@ class _AddAccountPageState extends State<AddAccountPage> {
                       User? currentUser = FirebaseAuth.instance.currentUser;
                       Map<String, dynamic> userInfoMap = {
                         "Id": currentUser!.uid,
+                        //"Id": Id,
                         "Full Name": nameControler.text,
                         "Account Number": accNumberControler.text,
                         "Address": addressControler.text,
@@ -178,6 +180,7 @@ class _AddAccountPageState extends State<AddAccountPage> {
                       };
                       await DatabaseMethods()
                           .addUserDetails(userInfoMap, currentUser.uid)
+                          //.addUserDetails(userInfoMap, Id)
                           .then(
                             (value) => {
                               Fluttertoast.showToast(
