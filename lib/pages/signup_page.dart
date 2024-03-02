@@ -20,32 +20,39 @@ class _SignUpState extends State<SignUp> {
   String? _username;
 
   Future<void> signUserUp() async {
+    // Show loading indicator
     showDialog(
-        context: context,
-        builder: (context) {
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
-        });
+      context: context,
+      builder: (context) {
+        return const Center(
+          child: CircularProgressIndicator(),
+        );
+      },
+    );
+
+    if (pwdcontroler.text != confirmpwdcontroler.text) {
+      if (mounted) Navigator.pop(context); // Close the loading indicator
+      showErrorMessage("Passwords doesn't match");
+      return;
+    }
 
     try {
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+          email: emailcontroler.text, password: pwdcontroler.text);
+
       User? user = FirebaseAuth.instance.currentUser;
       await user?.updateDisplayName(usernamecontroler.text);
-      setState(() {
-        _username =
-            usernamecontroler.text; // Set _username and trigger UI update
-      });
-      if (pwdcontroler.text == confirmpwdcontroler.text) {
-        await FirebaseAuth.instance.createUserWithEmailAndPassword(
-            email: emailcontroler.text, password: pwdcontroler.text);
-      } else {
-        showErrorMessage("Password dosent match");
-      }
+      if (!mounted) return; // Check if the widget is still mounted
 
-      Navigator.pop(context);
+      _username = usernamecontroler.text; // Set _username and trigger UI update
+
+      if (mounted) Navigator.pop(context); // Close the loading indicator
     } on FirebaseAuthException catch (e) {
-      Navigator.pop(context);
-      showErrorMessage(e.code);
+      if (mounted) {
+        Navigator.pop(
+            context); // Make sure to pop the loading indicator in case of an error
+        showErrorMessage(e.code); // Show the error message
+      }
     }
   }
 
