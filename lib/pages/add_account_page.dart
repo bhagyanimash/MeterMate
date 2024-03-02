@@ -17,6 +17,7 @@ class _AddAccountPageState extends State<AddAccountPage> {
   TextEditingController addressControler = new TextEditingController();
   TextEditingController contactControler = new TextEditingController();
   TextEditingController idControler = new TextEditingController();
+  bool dataAdded = false;
 
   @override
   Widget build(BuildContext context) {
@@ -191,7 +192,10 @@ class _AddAccountPageState extends State<AddAccountPage> {
                                   backgroundColor:
                                       const Color.fromRGBO(3, 2, 64, 1.000),
                                   textColor: Colors.white,
-                                  fontSize: 16.0)
+                                  fontSize: 16.0),
+                              setState(() {
+                                dataAdded = true;
+                              })
                             },
                           );
                     },
@@ -205,6 +209,31 @@ class _AddAccountPageState extends State<AddAccountPage> {
                   ),
                 ),
               ),
+              const SizedBox(
+                height: 20,
+              ),
+              if (dataAdded)
+                Center(
+                  child: SizedBox(
+                    height: 50,
+                    width: 500,
+                    child: RawMaterialButton(
+                      fillColor: const Color.fromRGBO(3, 2, 64, 1.000),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20.0)),
+                      onPressed: () {
+                        Navigator.pushNamed(context, 'qrGeneratorPage');
+                      },
+                      child: const Text(
+                        "Generate QR",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 18.0,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
             ],
           ),
         ),

@@ -40,8 +40,6 @@ class _SignUpState extends State<SignUp> {
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
           email: emailcontroler.text, password: pwdcontroler.text);
 
-      User? user = FirebaseAuth.instance.currentUser;
-      await user?.updateDisplayName(usernamecontroler.text);
       if (!mounted) return; // Check if the widget is still mounted
 
       _username = usernamecontroler.text; // Set _username and trigger UI update
