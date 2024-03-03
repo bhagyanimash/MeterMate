@@ -106,9 +106,6 @@ class _SignUpState extends State<SignUp> {
               const SizedBox(
                 height: 20.0,
               ),
-              const SizedBox(
-                height: 20.0,
-              ),
               const Padding(
                 padding: const EdgeInsets.only(left: 12.0),
                 child: Text(
@@ -206,7 +203,7 @@ class _SignUpState extends State<SignUp> {
                   ),
                   hintText: "Confirm Password",
                   prefixIcon: const Icon(
-                    Icons.password,
+                    Icons.lock,
                     color: Colors.black,
                   ),
                 ),
@@ -239,7 +236,15 @@ class _SignUpState extends State<SignUp> {
                 ),
               ),
               const SizedBox(
-                height: 20,
+                height: 10.0,
+              ),
+              const Center(
+                child: SizedBox(
+                  child: Text("or"),
+                ),
+              ),
+              const SizedBox(
+                height: 10.0,
               ),
               Center(
                 child: GestureDetector(
