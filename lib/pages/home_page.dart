@@ -144,7 +144,9 @@ class _HomePageState extends State<HomePage> {
                       children: [
                         IconButton(
                           iconSize: 80,
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.pushNamed(context, 'billHistoryPage');
+                          },
                           icon: const Icon(
                             Icons.assignment,
                             color: Color.fromRGBO(3, 2, 64, 1.000),
@@ -164,7 +166,9 @@ class _HomePageState extends State<HomePage> {
                       children: [
                         IconButton(
                           iconSize: 80,
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.pushNamed(context, 'billPage');
+                          },
                           icon: const Icon(
                             Icons.credit_card,
                             color: Color.fromRGBO(3, 2, 64, 1.000),

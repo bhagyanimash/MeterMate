@@ -1,5 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:metermate/pages/bill_history_page.dart';
+import 'package:metermate/pages/bill_page.dart';
+import 'package:metermate/pages/pay_now_page.dart';
 import 'package:metermate/pages/qr_generator_page.dart';
 import 'package:metermate/services/firebase_options.dart';
 import 'package:metermate/pages/add_account_page.dart';
@@ -34,7 +37,10 @@ class MeterMate extends StatelessWidget {
         'authPage': (context) => const AuthPage(),
         'addAccountPage': (context) => const AddAccountPage(),
         'meterScanPage': (context) => const MeterScanPage(),
-        "qrGeneratorPage": (context) => const GenerateQRpage()
+        "qrGeneratorPage": (context) => const GenerateQRpage(),
+        'billHistoryPage': (context) => const BillHistoryPage(),
+        'billPage': (context) => const BillPage(),
+        'payNowPage': (context) => const PayNowPage()
       },
     );
   }
