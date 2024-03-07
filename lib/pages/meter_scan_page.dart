@@ -99,6 +99,5 @@ class _MeterScanPageState extends State<MeterScanPage> {
         ),
       ),
     );
-    ;
   }
 }

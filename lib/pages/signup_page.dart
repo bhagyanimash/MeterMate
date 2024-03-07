@@ -17,7 +17,7 @@ class _SignUpState extends State<SignUp> {
   final pwdcontroler = TextEditingController();
   final confirmpwdcontroler = TextEditingController();
   final emailcontroler = TextEditingController();
-  String? _username;
+  //String? _username;
 
   Future<void> signUserUp() async {
     // Show loading indicator
@@ -42,7 +42,7 @@ class _SignUpState extends State<SignUp> {
 
       if (!mounted) return; // Check if the widget is still mounted
 
-      _username = usernamecontroler.text; // Set _username and trigger UI update
+      //_username = usernamecontroler.text;
 
       if (mounted) Navigator.pop(context); // Close the loading indicator
     } on FirebaseAuthException catch (e) {
