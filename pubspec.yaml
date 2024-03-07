@@ -17,9 +17,9 @@ dependencies:
 
   
   cupertino_icons: ^1.0.2
-  firebase_core: ^2.24.2
+  firebase_core: ^2.26.0
   firebase_analytics: ^10.8.0
-  cloud_firestore: ^4.14.0
+  cloud_firestore: ^4.15.7
   random_string: ^2.3.1
   fluttertoast: ^8.2.4
   firebase_auth: ^4.16.0
