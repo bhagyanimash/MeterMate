@@ -199,7 +199,7 @@ class _AddAccountPageState extends State<AddAccountPage> {
                           );
                     },
                     child: const Text(
-                      "ADD",
+                      "Add",
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 18.0,
