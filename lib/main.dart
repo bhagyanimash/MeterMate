@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:metermate/pages/add_employee.dart';
 import 'package:metermate/pages/bill_history_page.dart';
 import 'package:metermate/pages/bill_page.dart';
+import 'package:metermate/pages/calendar_page.dart';
 import 'package:metermate/pages/pay_now_page.dart';
 import 'package:metermate/pages/qr_generator_page.dart';
 import 'package:metermate/services/firebase_options.dart';
@@ -42,7 +43,8 @@ class MeterMate extends StatelessWidget {
         'billHistoryPage': (context) => const BillHistoryPage(),
         'billPage': (context) => const BillPage(),
         'payNowPage': (context) => const PayNowPage(),
-        'addEmployee': (context) => const AddEmployeePage()
+        'addEmployee': (context) => const AddEmployeePage(),
+        'caledarPage': (context) => const CalendarPage()
       },
     );
   }
