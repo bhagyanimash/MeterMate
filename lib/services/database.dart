@@ -21,7 +21,14 @@ class DatabaseMethods {
     }
   }
 
-  Future<Stream<QuerySnapshot>> getUserDetails() async {
+  Future<Stream<QuerySnapshot>> getUserDetails(String userId) async {
     return await FirebaseFirestore.instance.collection("User").snapshots();
+  }
+
+  Future<DocumentSnapshot> getCurrentUserDetails(String userId) async {
+    return await FirebaseFirestore.instance
+        .collection("User")
+        .doc(userId)
+        .get();
   }
 }

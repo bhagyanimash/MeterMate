@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:metermate/services/database.dart';
 
@@ -10,78 +11,65 @@ class UserDetail extends StatefulWidget {
 }
 
 class _UserDetailState extends State<UserDetail> {
-  Stream? UserStream;
-
-  getontheload() async {
-    UserStream = await DatabaseMethods().getUserDetails();
-    setState(() {});
-  }
+  Future<DocumentSnapshot>? userDetailFuture;
 
   @override
   void initState() {
-    getontheload();
     super.initState();
+    final userId = FirebaseAuth.instance.currentUser?.uid;
+    if (userId != null) {
+      userDetailFuture = DatabaseMethods().getCurrentUserDetails(userId);
+    }
   }
 
-  Widget allUserDetails() {
-    return StreamBuilder(
-        stream: UserStream,
-        builder: (context, AsyncSnapshot snapshot) {
-          return snapshot.hasData
-              ? ListView.builder(
-                  itemCount: snapshot.data.docs.length,
-                  itemBuilder: (context, index) {
-                    DocumentSnapshot ds = snapshot.data.docs[index];
-                    return Container(
-                      margin: EdgeInsets.only(bottom: 10),
-                      child: Material(
-                        elevation: 5,
-                        borderRadius: BorderRadius.circular(10),
-                        child: Container(
-                          padding: EdgeInsets.all(20),
-                          width: MediaQuery.of(context).size.width,
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(10)),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                "Full Name: " + ds["Full Name"],
-                                style: const TextStyle(
-                                    fontSize: 20,
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              Text(
-                                "Account Number: " + ds["Account Number"],
-                                style: const TextStyle(
-                                    fontSize: 20,
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              Text(
-                                "Address: " + ds["Address"],
-                                style: const TextStyle(
-                                    fontSize: 20,
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              Text(
-                                "NIC Number: " + ds["NIC"],
-                                style: const TextStyle(
-                                    fontSize: 20,
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    );
-                  })
-              : Container();
-        });
+  Widget userDetails() {
+    return FutureBuilder<DocumentSnapshot>(
+      future: userDetailFuture,
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const Center(child: CircularProgressIndicator());
+        }
+        if (!snapshot.hasData || snapshot.data == null) {
+          return const Center(child: Text("No user data found"));
+        }
+        final ds = snapshot.data!;
+        return ListView(
+          children: [
+            userDetailsTile("Full Name :", ds["Full Name"]),
+            userDetailsTile("Account Number :", ds["Account Number"]),
+            userDetailsTile("Address :", ds["Address"]),
+            userDetailsTile("NIC Number :", ds["NIC"]),
+          ],
+        );
+      },
+    );
+  }
+
+  Widget userDetailsTile(String title, String value) {
+    return Container(
+      margin: const EdgeInsets.only(bottom: 10),
+      padding: const EdgeInsets.all(20),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(10),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.5),
+            spreadRadius: 2,
+            blurRadius: 5,
+            offset: const Offset(0, 3),
+          ),
+        ],
+      ),
+      child: Row(
+        children: [
+          Expanded(
+              child: Text(title,
+                  style: const TextStyle(fontWeight: FontWeight.bold))),
+          Expanded(child: Text(value, textAlign: TextAlign.right)),
+        ],
+      ),
+    );
   }
 
   @override
@@ -89,14 +77,12 @@ class _UserDetailState extends State<UserDetail> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Color.fromRGBO(233, 230, 242, 1.000),
-        title: Text('User Details'),
+        backgroundColor: const Color.fromRGBO(233, 230, 242, 1.000),
+        title: const Text('User Details'),
       ),
       body: Container(
-        margin: EdgeInsets.only(left: 20, right: 20, top: 30),
-        child: Column(
-          children: [Expanded(child: allUserDetails())],
-        ),
+        margin: const EdgeInsets.only(left: 20, right: 20, top: 30),
+        child: userDetails(),
       ),
     );
   }
