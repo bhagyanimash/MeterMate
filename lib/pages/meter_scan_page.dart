@@ -11,6 +11,7 @@ class MeterScanPage extends StatefulWidget {
 
 class _MeterScanPageState extends State<MeterScanPage> {
   String _text = '';
+  bool _imagePicked = false;
   final ImagePicker _picker = ImagePicker();
 
   Future<void> _pickImage() async {
@@ -44,6 +45,7 @@ class _MeterScanPageState extends State<MeterScanPage> {
       // Update the state with the extracted numeric text.
       setState(() {
         _text = numericText.toString();
+        _imagePicked = true;
       });
 
       // Don't forget to close the detector when it's no longer needed.
@@ -69,10 +71,28 @@ class _MeterScanPageState extends State<MeterScanPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const SizedBox(
-              height: 40,
+            Center(
+              child: Image.asset(
+                'images/meter.png',
+                width: 300,
+              ),
             ),
-            if (_text.isNotEmpty) SelectableText(_text),
+            const SizedBox(
+              height: 10,
+            ),
+            if (_text.isNotEmpty)
+              Container(
+                margin: const EdgeInsets.all(30),
+                child: Material(
+                  borderRadius: BorderRadius.circular(10),
+                  elevation: 5,
+                  child: Container(
+                    //margin: EdgeInsets.all(20),
+                    padding: const EdgeInsets.all(20),
+                    child: SelectableText(_text + "kWh"),
+                  ),
+                ),
+              ),
             SizedBox(
               height: 50,
               width: 350,
@@ -95,6 +115,28 @@ class _MeterScanPageState extends State<MeterScanPage> {
             const SizedBox(
               height: 20,
             ),
+            if (_imagePicked)
+              SizedBox(
+                height: 50,
+                width: 350,
+                child: RawMaterialButton(
+                  fillColor: const Color.fromRGBO(3, 2, 64, 1.000),
+                  //elevation: 0.0,
+                  //padding: EdgeInsets.symmetric(),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20.0)),
+                  onPressed: () {
+                    Navigator.pushNamed(context, "billPage");
+                  },
+                  child: const Text(
+                    "Calculate Bill",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18.0,
+                    ),
+                  ),
+                ),
+              ),
           ],
         ),
       ),

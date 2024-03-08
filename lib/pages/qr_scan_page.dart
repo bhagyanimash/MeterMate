@@ -72,12 +72,19 @@ class _QRscanPageState extends State<QRscanPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-              '$qrResult',
-              style: const TextStyle(color: Colors.black),
+            // Text(
+            //   '$qrResult',
+            //   style: const TextStyle(color: Colors.black),
+            // ),
+
+            Center(
+              child: Image.asset(
+                'images/qr.png',
+                width: 250,
+              ),
             ),
             const SizedBox(
-              height: 40,
+              height: 80,
             ),
             SizedBox(
               height: 50,
