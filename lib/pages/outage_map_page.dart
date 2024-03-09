@@ -9,8 +9,8 @@ class OutageMapPage extends StatefulWidget {
 }
 
 class _OutageMapPageState extends State<OutageMapPage> {
-  final CameraPosition _initialLocation = CameraPosition(
-      target: LatLng(37.42796133580664, -122.085749655962), zoom: 14);
+  final CameraPosition _initialLocation =
+      const CameraPosition(target: LatLng(7.2906, 80.6337), zoom: 10);
 
   @override
   Widget build(BuildContext context) {

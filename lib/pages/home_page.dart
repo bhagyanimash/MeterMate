@@ -37,7 +37,11 @@ class _HomePageState extends State<HomePage> {
     // ignore: prefer_const_constructors
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: 70,
+        shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(20),
+                bottomRight: Radius.circular(20))),
+        toolbarHeight: 80,
         backgroundColor: const Color.fromRGBO(233, 230, 242, 1.000),
         leading: Row(
           children: [
@@ -59,7 +63,9 @@ class _HomePageState extends State<HomePage> {
         actions: [
           IconButton(
             iconSize: 30,
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(context, 'outageMapPage');
+            },
             icon: const Icon(
               Icons.notifications,
               color: Color.fromRGBO(3, 2, 64, 1.000),
@@ -97,7 +103,7 @@ class _HomePageState extends State<HomePage> {
                 padding: const EdgeInsets.all(20),
 
                 child: Text(
-                  "Logged IN as : " + user!.email!,
+                  "Hi ! " + user!.email!,
                   style: const TextStyle(
                     fontSize: 20,
                     color: Colors.black,

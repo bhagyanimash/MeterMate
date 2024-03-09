@@ -188,8 +188,9 @@ class _AddAccountPageState extends State<AddAccountPage> {
                                   toastLength: Toast.LENGTH_SHORT,
                                   gravity: ToastGravity.CENTER,
                                   timeInSecForIosWeb: 1,
-                                  backgroundColor: Colors.blueAccent,
-                                  textColor: Colors.white,
+                                  backgroundColor:
+                                      Color.fromRGBO(233, 230, 242, 1.000),
+                                  textColor: Colors.black,
                                   fontSize: 16.0),
                               setState(() {
                                 dataAdded = true;

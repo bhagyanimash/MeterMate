@@ -74,7 +74,7 @@ class _MeterScanPageState extends State<MeterScanPage> {
             Center(
               child: Image.asset(
                 'images/meter.png',
-                width: 300,
+                width: 250,
               ),
             ),
             const SizedBox(
@@ -88,7 +88,7 @@ class _MeterScanPageState extends State<MeterScanPage> {
                   elevation: 5,
                   child: Container(
                     //margin: EdgeInsets.all(20),
-                    padding: const EdgeInsets.all(20),
+                    padding: const EdgeInsets.fromLTRB(40, 10, 40, 10),
                     child: SelectableText(_text + "kWh"),
                   ),
                 ),
