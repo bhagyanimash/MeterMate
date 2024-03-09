@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:metermate/pages/qr_code_page.dart';
+import 'package:qr_flutter/qr_flutter.dart';
 import '../services/database.dart';
 
 class AddAccountPage extends StatefulWidget {
@@ -17,6 +19,8 @@ class _AddAccountPageState extends State<AddAccountPage> {
   TextEditingController contactControler = new TextEditingController();
   TextEditingController idControler = new TextEditingController();
   bool dataAdded = false;
+  String userUID = "";
+  bool qrRequested = false;
 
   @override
   Widget build(BuildContext context) {
@@ -170,33 +174,36 @@ class _AddAccountPageState extends State<AddAccountPage> {
                     onPressed: () async {
                       //String Id = randomAlphaNumeric(10);
                       User? currentUser = FirebaseAuth.instance.currentUser;
-                      Map<String, dynamic> userInfoMap = {
-                        "Id": currentUser!.uid,
-                        //"Id": Id,
-                        "Full Name": nameControler.text,
-                        "Account Number": accNumberControler.text,
-                        "Address": addressControler.text,
-                        "NIC": idControler.text
-                      };
-                      await DatabaseMethods()
-                          .addUserDetails(userInfoMap, currentUser.uid)
-                          //.addUserDetails(userInfoMap, Id)
-                          .then(
-                            (value) => {
-                              Fluttertoast.showToast(
-                                  msg: "Successfully Added",
-                                  toastLength: Toast.LENGTH_SHORT,
-                                  gravity: ToastGravity.CENTER,
-                                  timeInSecForIosWeb: 1,
-                                  backgroundColor:
-                                      Color.fromRGBO(233, 230, 242, 1.000),
-                                  textColor: Colors.black,
-                                  fontSize: 16.0),
-                              setState(() {
-                                dataAdded = true;
-                              })
-                            },
-                          );
+                      if (currentUser != null) {
+                        Map<String, dynamic> userInfoMap = {
+                          "Id": currentUser!.uid,
+                          //"Id": Id,
+                          "Full Name": nameControler.text,
+                          "Account Number": accNumberControler.text,
+                          "Address": addressControler.text,
+                          "NIC": idControler.text
+                        };
+                        await DatabaseMethods()
+                            .addUserDetails(userInfoMap, currentUser.uid)
+                            //.addUserDetails(userInfoMap, Id)
+                            .then(
+                              (value) => {
+                                Fluttertoast.showToast(
+                                    msg: "Successfully Added",
+                                    toastLength: Toast.LENGTH_SHORT,
+                                    gravity: ToastGravity.CENTER,
+                                    timeInSecForIosWeb: 1,
+                                    backgroundColor:
+                                        Color.fromRGBO(233, 230, 242, 1.000),
+                                    textColor: Colors.black,
+                                    fontSize: 16.0),
+                                setState(() {
+                                  dataAdded = true;
+                                  userUID = currentUser.uid;
+                                })
+                              },
+                            );
+                      }
                     },
                     child: const Text(
                       "Add",
@@ -221,7 +228,19 @@ class _AddAccountPageState extends State<AddAccountPage> {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20.0)),
                       onPressed: () {
-                        Navigator.pushNamed(context, 'qrGeneratorPage');
+                        String currentUserUID =
+                            FirebaseAuth.instance.currentUser?.uid ??
+                                'defaultUID';
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                QRCodePage(data: currentUserUID),
+                          ),
+                        );
+                        setState(() {
+                          qrRequested = true;
+                        });
                       },
                       child: const Text(
                         "Generate QR",
@@ -233,6 +252,19 @@ class _AddAccountPageState extends State<AddAccountPage> {
                     ),
                   ),
                 ),
+              // if (qrRequested)
+              //   Center(
+              //     child: Padding(
+              //       padding: const EdgeInsets.only(top: 20),
+              //       child: Center(
+              //         child: QrImageView(
+              //           data: userUID,
+              //           version: QrVersions.auto,
+              //           size: 200.0,
+              //         ),
+              //       ),
+              //     ),
+              //   ),
             ],
           ),
         ),
