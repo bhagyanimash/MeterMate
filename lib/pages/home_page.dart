@@ -22,38 +22,46 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     user = FirebaseAuth.instance.currentUser;
     _pages.addAll([
-      Stack(
-        children: [
-          Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Center(
-                child: Container(
-                  margin: const EdgeInsets.all(10),
-                  child: Material(
-                    borderRadius: BorderRadius.circular(10),
-                    elevation: 5,
-                    child: Container(
-                      //margin: EdgeInsets.all(20),
-                      padding: const EdgeInsets.all(10),
-
-                      child: Text(
-                        "Hi ! " + user!.email!,
-                        style: const TextStyle(
-                          fontSize: 20,
-                          color: Colors.black,
-                          //fontWeight: FontWeight.bold
-                        ),
+      SingleChildScrollView(
+        // Wrap with SingleChildScrollView for scrollable content
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            // User email container
+            Center(
+              child: Container(
+                margin: const EdgeInsets.all(20),
+                child: Material(
+                  borderRadius: BorderRadius.circular(20),
+                  elevation: 5,
+                  child: Container(
+                    padding: const EdgeInsets.all(10),
+                    child: Text(
+                      "Welcome ! " + user!.email!,
+                      style: const TextStyle(
+                        fontSize: 20,
+                        color: Colors.black,
                       ),
                     ),
                   ),
                 ),
               ),
-            ],
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 250),
-            child: GridView.count(
+            ),
+
+            const SizedBox(
+              height: 0,
+            ),
+            Image.asset(
+              'images/home.png',
+              width: 400,
+              height: 150,
+            ),
+
+            GridView.count(
+              shrinkWrap:
+                  true, // Add this line to make GridView work inside Column
+              physics:
+                  NeverScrollableScrollPhysics(), // Add this line to disable scrolling inside GridView
               padding: const EdgeInsets.all(30),
               crossAxisCount: 2,
               children: [
@@ -145,10 +153,12 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                 ),
+                // Your Container widgets for Scan, Bill History, Pay Bill, Add Account
+                // Same as before, just ensure you have them here in the list
               ],
             ),
-          ),
-        ],
+          ],
+        ),
       ),
       const OutageMapPage(),
       const CalendarPage(),
@@ -186,6 +196,7 @@ class _HomePageState extends State<HomePage> {
     userName = user?.displayName ?? '';*/
     // ignore: prefer_const_constructors
     return Scaffold(
+      //backgroundColor: Colors.white,
       appBar: AppBar(
         shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.only(
@@ -205,7 +216,7 @@ class _HomePageState extends State<HomePage> {
         title: const Text(
           "MeterMate",
           style: TextStyle(
-            fontWeight: FontWeight.bold,
+            fontWeight: FontWeight.w500,
             fontSize: 26,
             color: Color.fromRGBO(3, 2, 64, 1.000),
           ),
@@ -213,9 +224,7 @@ class _HomePageState extends State<HomePage> {
         actions: [
           IconButton(
             iconSize: 30,
-            onPressed: () {
-              Navigator.pushNamed(context, '');
-            },
+            onPressed: () {},
             icon: const Icon(
               Icons.notifications,
               color: Color.fromRGBO(3, 2, 64, 1.000),
