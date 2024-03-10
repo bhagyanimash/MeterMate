@@ -2,7 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:metermate/pages/qr_code_page.dart';
-import 'package:qr_flutter/qr_flutter.dart';
 import '../services/database.dart';
 
 class AddAccountPage extends StatefulWidget {
@@ -176,7 +175,7 @@ class _AddAccountPageState extends State<AddAccountPage> {
                       User? currentUser = FirebaseAuth.instance.currentUser;
                       if (currentUser != null) {
                         Map<String, dynamic> userInfoMap = {
-                          "Id": currentUser!.uid,
+                          "Id": currentUser.uid,
                           //"Id": Id,
                           "Full Name": nameControler.text,
                           "Account Number": accNumberControler.text,

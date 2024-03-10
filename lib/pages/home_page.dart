@@ -1,5 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:metermate/pages/calendar_page.dart';
+import 'package:metermate/pages/outage_map_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -9,109 +11,45 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final user = FirebaseAuth.instance.currentUser;
+  User? user;
   //late String _userName;
-  void signUserOut() {
-    FirebaseAuth.instance.signOut();
-  }
+  int _selectedIndex = 0; // Added line: to keep track of the selected index
+
+  final List<Widget> _pages = [];
 
   @override
-  // void initState() {
-  //   super.initState();
-  //   _loadUserName();
-  // }
-
-  // Future<void> _loadUserName() async {
-  //   User? user = FirebaseAuth.instance.currentUser;
-  //   if (user != null) {
-  //     setState(() {
-  //       _userName = user.displayName ?? '';
-  //     });
-  //   }
-  // }
-
-  @override
-  Widget build(BuildContext context) {
-    /*User? user = FirebaseAuth.instance.currentUser;
-    userName = user?.displayName ?? '';*/
-    // ignore: prefer_const_constructors
-    return Scaffold(
-      appBar: AppBar(
-        shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(20),
-                bottomRight: Radius.circular(20))),
-        toolbarHeight: 80,
-        backgroundColor: const Color.fromRGBO(233, 230, 242, 1.000),
-        leading: Row(
-          children: [
-            const Padding(padding: EdgeInsets.only(left: 15)),
-            Image.asset(
-              'images/onlylogo.png',
-              width: 40,
-            ),
-          ],
-        ),
-        title: const Text(
-          "MeterMate",
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 26,
-            color: Color.fromRGBO(3, 2, 64, 1.000),
-          ),
-        ),
-        actions: [
-          IconButton(
-            iconSize: 30,
-            onPressed: () {
-              Navigator.pushNamed(context, 'outageMapPage');
-            },
-            icon: const Icon(
-              Icons.notifications,
-              color: Color.fromRGBO(3, 2, 64, 1.000),
-            ),
-          ),
-          IconButton(
-            iconSize: 30,
-            onPressed: () {
-              Navigator.pushNamed(context, "userDetails");
-            },
-            icon: const Icon(
-              Icons.account_circle,
-              color: Color.fromRGBO(3, 2, 64, 1.000),
-            ),
-          ),
-          IconButton(
-            iconSize: 30,
-            onPressed: () {
-              signUserOut();
-            },
-            icon: const Icon(Icons.logout),
-            color: Color.fromRGBO(3, 2, 64, 1.000),
-          ),
-        ],
-      ),
-      body: Stack(
+  void initState() {
+    super.initState();
+    user = FirebaseAuth.instance.currentUser;
+    _pages.addAll([
+      Stack(
         children: [
-          Container(
-            margin: const EdgeInsets.all(30),
-            child: Material(
-              borderRadius: BorderRadius.circular(10),
-              elevation: 5,
-              child: Container(
-                //margin: EdgeInsets.all(20),
-                padding: const EdgeInsets.all(20),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Center(
+                child: Container(
+                  margin: const EdgeInsets.all(10),
+                  child: Material(
+                    borderRadius: BorderRadius.circular(10),
+                    elevation: 5,
+                    child: Container(
+                      //margin: EdgeInsets.all(20),
+                      padding: const EdgeInsets.all(10),
 
-                child: Text(
-                  "Hi ! " + user!.email!,
-                  style: const TextStyle(
-                    fontSize: 20,
-                    color: Colors.black,
-                    //fontWeight: FontWeight.bold
+                      child: Text(
+                        "Hi ! " + user!.email!,
+                        style: const TextStyle(
+                          fontSize: 20,
+                          color: Colors.black,
+                          //fontWeight: FontWeight.bold
+                        ),
+                      ),
+                    ),
                   ),
                 ),
               ),
-            ),
+            ],
           ),
           Padding(
             padding: const EdgeInsets.only(top: 250),
@@ -212,12 +150,107 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
+      const OutageMapPage(),
+      const CalendarPage(),
+    ]);
+  }
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  void signUserOut() {
+    FirebaseAuth.instance.signOut();
+  }
+
+  @override
+  // void initState() {
+  //   super.initState();
+  //   _loadUserName();
+  // }
+
+  // Future<void> _loadUserName() async {
+  //   User? user = FirebaseAuth.instance.currentUser;
+  //   if (user != null) {
+  //     setState(() {
+  //       _userName = user.displayName ?? '';
+  //     });
+  //   }
+  // }
+
+  @override
+  Widget build(BuildContext context) {
+    /*User? user = FirebaseAuth.instance.currentUser;
+    userName = user?.displayName ?? '';*/
+    // ignore: prefer_const_constructors
+    return Scaffold(
+      appBar: AppBar(
+        shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(20),
+                bottomRight: Radius.circular(20))),
+        toolbarHeight: 80,
+        backgroundColor: const Color.fromRGBO(233, 230, 242, 1.000),
+        leading: Row(
+          children: [
+            const Padding(padding: EdgeInsets.only(left: 15)),
+            Image.asset(
+              'images/onlylogo.png',
+              width: 40,
+            ),
+          ],
+        ),
+        title: const Text(
+          "MeterMate",
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 26,
+            color: Color.fromRGBO(3, 2, 64, 1.000),
+          ),
+        ),
+        actions: [
+          IconButton(
+            iconSize: 30,
+            onPressed: () {
+              Navigator.pushNamed(context, '');
+            },
+            icon: const Icon(
+              Icons.notifications,
+              color: Color.fromRGBO(3, 2, 64, 1.000),
+            ),
+          ),
+          IconButton(
+            iconSize: 30,
+            onPressed: () {
+              Navigator.pushNamed(context, "userDetails");
+            },
+            icon: const Icon(
+              Icons.account_circle,
+              color: Color.fromRGBO(3, 2, 64, 1.000),
+            ),
+          ),
+          IconButton(
+            iconSize: 30,
+            onPressed: () {
+              signUserOut();
+            },
+            icon: const Icon(Icons.logout),
+            color: Color.fromRGBO(3, 2, 64, 1.000),
+          ),
+        ],
+      ),
+      body: Center(
+        child: _pages.elementAt(_selectedIndex), // Display the selected page
+      ),
       bottomNavigationBar: NavigationBar(
         backgroundColor: Colors.white,
         elevation: 30,
-        onDestinationSelected: (int index) {
-          setState(() {});
-        },
+        selectedIndex: _selectedIndex, // Use the _selectedIndex
+        onDestinationSelected:
+            _onItemTapped, // Update to use the _onItemTapped handler
+
         destinations: const <Widget>[
           NavigationDestination(
             icon: Icon(

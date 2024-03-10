@@ -15,9 +15,9 @@ class _OutageMapPageState extends State<OutageMapPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-          title: const Text('Outage Map'),
-          backgroundColor: const Color.fromRGBO(233, 230, 242, 1.000)),
+      // appBar: AppBar(
+      //     title: const Text('Outage Map'),
+      //     backgroundColor: const Color.fromRGBO(233, 230, 242, 1.000)),
       body: GoogleMap(
         initialCameraPosition: _initialLocation,
         mapType: MapType.normal,

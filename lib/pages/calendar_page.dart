@@ -12,12 +12,12 @@ class _CalendarPageState extends State<CalendarPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-          title: const Text(
-            'Calendar',
-            style: TextStyle(),
-          ),
-          backgroundColor: const Color.fromRGBO(233, 230, 242, 1.000)),
+      // appBar: AppBar(
+      //     title: const Text(
+      //       'Calendar',
+      //       style: TextStyle(),
+      //     ),
+      //     backgroundColor: const Color.fromRGBO(233, 230, 242, 1.000)),
       body: Column(
         //mainAxisAlignment: MainAxisAlignment.center,
         children: [
