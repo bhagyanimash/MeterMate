@@ -53,7 +53,13 @@ class _QRCodePageState extends State<QRCodePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Download QR Code'),
+        title: const Text(
+          "Download QR",
+          style: TextStyle(
+              fontWeight: FontWeight.bold,
+              color: Color.fromRGBO(3, 2, 64, 1.000)),
+        ),
+        backgroundColor: const Color.fromRGBO(233, 230, 242, 1.000),
       ),
       body: Center(
         child: RepaintBoundary(

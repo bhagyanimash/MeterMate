@@ -216,7 +216,7 @@ class _HomePageState extends State<HomePage> {
         title: const Text(
           "MeterMate",
           style: TextStyle(
-            fontWeight: FontWeight.w500,
+            fontWeight: FontWeight.bold,
             fontSize: 26,
             color: Color.fromRGBO(3, 2, 64, 1.000),
           ),

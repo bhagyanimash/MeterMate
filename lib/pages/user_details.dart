@@ -78,7 +78,12 @@ class _UserDetailState extends State<UserDetail> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: const Color.fromRGBO(233, 230, 242, 1.000),
-        title: const Text('User Details'),
+        title: const Text(
+          'User Details',
+          style: TextStyle(
+              fontWeight: FontWeight.bold,
+              color: Color.fromRGBO(3, 2, 64, 1.000)),
+        ),
       ),
       body: Container(
         margin: const EdgeInsets.only(left: 20, right: 20, top: 30),

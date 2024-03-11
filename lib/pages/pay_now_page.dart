@@ -12,8 +12,13 @@ class _PayNowPageState extends State<PayNowPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Payment GateWay"),
         backgroundColor: const Color.fromRGBO(233, 230, 242, 1.000),
+        title: const Text(
+          "Payment Gateway",
+          style: TextStyle(
+              fontWeight: FontWeight.bold,
+              color: Color.fromRGBO(3, 2, 64, 1.000)),
+        ),
       ),
       backgroundColor: Colors.white,
       body: SafeArea(

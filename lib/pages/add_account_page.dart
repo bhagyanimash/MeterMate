@@ -37,8 +37,8 @@ class _AddAccountPageState extends State<AddAccountPage> {
         title: const Text(
           "Add Account",
           style: TextStyle(
-            color: Colors.black,
-          ),
+              fontWeight: FontWeight.bold,
+              color: Color.fromRGBO(3, 2, 64, 1.000)),
         ),
       ),
       body: SafeArea(
@@ -223,7 +223,7 @@ class _AddAccountPageState extends State<AddAccountPage> {
                     height: 50,
                     width: 500,
                     child: RawMaterialButton(
-                      fillColor: const Color.fromRGBO(3, 2, 64, 1.000),
+                      fillColor: Color.fromRGBO(233, 230, 242, 1.000),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20.0)),
                       onPressed: () {
@@ -244,7 +244,7 @@ class _AddAccountPageState extends State<AddAccountPage> {
                       child: const Text(
                         "Generate QR",
                         style: TextStyle(
-                          color: Colors.white,
+                          color: Color.fromRGBO(3, 2, 64, 1.000),
                           fontSize: 18.0,
                         ),
                       ),

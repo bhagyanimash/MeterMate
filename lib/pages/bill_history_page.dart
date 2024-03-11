@@ -15,6 +15,9 @@ class _BillHistoryPageState extends State<BillHistoryPage> {
         backgroundColor: const Color.fromRGBO(233, 230, 242, 1.000),
         title: const Text(
           "Bill History",
+          style: TextStyle(
+              fontWeight: FontWeight.bold,
+              color: Color.fromRGBO(3, 2, 64, 1.000)),
         ),
       ),
       backgroundColor: Colors.white,

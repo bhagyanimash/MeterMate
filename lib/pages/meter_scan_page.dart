@@ -63,8 +63,10 @@ class _MeterScanPageState extends State<MeterScanPage> {
         backgroundColor: Color.fromRGBO(233, 230, 242, 1.000),
         elevation: 0,
         title: const Text(
-          'Scan Meter Board',
-          style: TextStyle(color: Colors.black),
+          "Scan Meter Board",
+          style: TextStyle(
+              fontWeight: FontWeight.bold,
+              color: Color.fromRGBO(3, 2, 64, 1.000)),
         ),
       ),
       body: Center(
@@ -120,7 +122,7 @@ class _MeterScanPageState extends State<MeterScanPage> {
                 height: 50,
                 width: 350,
                 child: RawMaterialButton(
-                  fillColor: const Color.fromRGBO(3, 2, 64, 1.000),
+                  fillColor: const Color.fromRGBO(233, 230, 242, 1.000),
                   //elevation: 0.0,
                   //padding: EdgeInsets.symmetric(),
                   shape: RoundedRectangleBorder(
@@ -131,7 +133,7 @@ class _MeterScanPageState extends State<MeterScanPage> {
                   child: const Text(
                     "Calculate Bill",
                     style: TextStyle(
-                      color: Colors.white,
+                      color: Color.fromRGBO(3, 2, 64, 1.000),
                       fontSize: 18.0,
                     ),
                   ),

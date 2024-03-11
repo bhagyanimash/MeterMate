@@ -7,8 +7,13 @@ class BillPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Bill Details"),
         backgroundColor: const Color.fromRGBO(233, 230, 242, 1.000),
+        title: const Text(
+          "Bill Details",
+          style: TextStyle(
+              fontWeight: FontWeight.bold,
+              color: Color.fromRGBO(3, 2, 64, 1.000)),
+        ),
       ),
       backgroundColor: Colors.white,
       body: SafeArea(

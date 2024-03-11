@@ -64,8 +64,10 @@ class _QRscanPageState extends State<QRscanPage> {
         backgroundColor: Color.fromRGBO(233, 230, 242, 1.000),
         elevation: 0,
         title: const Text(
-          'Scan Meter QR',
-          style: TextStyle(color: Colors.black),
+          "Scan Meter QR",
+          style: TextStyle(
+              fontWeight: FontWeight.bold,
+              color: Color.fromRGBO(3, 2, 64, 1.000)),
         ),
       ),
       body: Center(
@@ -113,7 +115,7 @@ class _QRscanPageState extends State<QRscanPage> {
                 height: 50,
                 width: 350,
                 child: RawMaterialButton(
-                  fillColor: const Color.fromRGBO(3, 2, 64, 1.000),
+                  fillColor: const Color.fromRGBO(233, 230, 242, 1.000),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20.0)),
                   onPressed: () {
@@ -124,7 +126,7 @@ class _QRscanPageState extends State<QRscanPage> {
                   child: const Text(
                     "Next",
                     style: TextStyle(
-                      color: Colors.white,
+                      color: Color.fromRGBO(3, 2, 64, 1.000),
                       fontSize: 18.0,
                     ),
                   ),
