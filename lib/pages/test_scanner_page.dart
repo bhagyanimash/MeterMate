@@ -10,6 +10,15 @@ class TestScannerPage extends StatefulWidget {
 class _ScannerPageState extends State<TestScannerPage> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return  SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.blue
+      
+        ),
+        body: Text(""),
+
+      ),
+    );
   }
 }

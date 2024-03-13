@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:metermate/qr_generator_page.dart';
 import 'package:metermate/pages/test_scanner_page.dart';
 
 
@@ -13,7 +14,7 @@ class MeterMate extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: TestScannerPage(),
+      home: GenerateQRpage(),
     );
   }
 }
